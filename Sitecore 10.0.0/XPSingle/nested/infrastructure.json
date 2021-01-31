@@ -2,6 +2,7 @@
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "variables": {
+    "appServiceEnvironmentName": "testnu2009",
     "webApiVersion": "2018-02-01",
     "serverFarmApiVersion": "2018-02-01",
     "dbApiVersion": "2014-04-01-preview",
@@ -43,12 +44,6 @@
     }
   },
   "parameters": {
-    "appServiceEnvironmentName": {
-      "type": "string",
-      "metadata": {
-          "description": "The name of the App Service Environment where the app service plan will be created."
-      }
-    },
     "deploymentId": {
       "type": "string",
       "defaultValue": "[resourceGroup().name]"
@@ -246,7 +241,7 @@
       "properties": {
         "name": "[variables('singleHostingPlanNameTidy')]",
         "hostingEnvironmentProfile": {
-            "id": "[resourceId('Microsoft.Web/hostingEnvironments',parameters('appServiceEnvironmentName'))]"
+            "id": "[resourceId('Microsoft.Web/hostingEnvironments',variables('appServiceEnvironmentName'))]"
         }
       },
       "location": "[parameters('location')]",

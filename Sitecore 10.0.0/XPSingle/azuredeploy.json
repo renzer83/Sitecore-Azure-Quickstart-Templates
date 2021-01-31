@@ -47,10 +47,7 @@
       "type": "securestring",
       "defaultValue": ""
     },
-    "appServiceEnvironmentName": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().name]"
-    },
+
     "deploymentId": {
       "type": "string",
       "defaultValue": "[resourceGroup().name]"
@@ -630,9 +627,6 @@
           "uri": "[concat(uri(parameters('templateLinkBase'), 'nested/infrastructure.json'), parameters('templateLinkAccessToken'))]"
         },
         "parameters": {
-          "appServiceEnvironmentName": {
-            "value": "[parameters('appServiceEnvironmentName')]"
-          },
           "deploymentId": {
             "value": "[parameters('deploymentId')]"
           },
