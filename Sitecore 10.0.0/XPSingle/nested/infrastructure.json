@@ -238,8 +238,8 @@
       },
       "properties": {
         "name": "[variables('singleHostingPlanNameTidy')]",
-        "hostingEnvironmentId": "dv-capro-ase-01",
-        "hostingEnvironment": "/subscriptions/932a46b4-0790-4025-9cbc-a4eb1ef0fa0c/resourceGroups/ne-dv-capro-ase-rg/providers/Microsoft.Web/hostingEnvironments/dv-capro-ase-01"
+        "hostingEnvironmentId": "/subscriptions/42b43065-5940-46a9-a451-de1516df047c/resourceGroups/ne-dv-webcm-spl-rg/providers/Microsoft.Web/hostingEnvironments/testnu2009",
+        "hostingEnvironment": "testnu2009"
       },
       "location": "[parameters('location')]",
       "tags": {
