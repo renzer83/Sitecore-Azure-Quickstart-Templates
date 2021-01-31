@@ -232,6 +232,7 @@
       "name": "[variables('singleHostingPlanNameTidy')]",
       "apiVersion": "[variables('serverFarmApiVersion')]",
       "sku": {
+        "name": "ASE_WORKPOOL",
         "tier": "Isolated",
         "size": "I1",
         "capacity": "[parameters('singleHostingPlanSkuCapacity')]"
