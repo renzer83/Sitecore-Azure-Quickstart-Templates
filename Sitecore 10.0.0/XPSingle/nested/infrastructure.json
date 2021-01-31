@@ -43,6 +43,12 @@
     }
   },
   "parameters": {
+    "appServiceEnvironmentName": {
+      "type": "string",
+      "metadata": {
+          "description": "The name of the App Service Environment where the app service plan will be created."
+      }
+    },
     "deploymentId": {
       "type": "string",
       "defaultValue": "[resourceGroup().name]"
@@ -240,8 +246,8 @@
       "properties": {
         "name": "[variables('singleHostingPlanNameTidy')]",
         "hostingEnvironmentProfile": {
-          "id": "/subscriptions/42b43065-5940-46a9-a451-de1516df047c/resourceGroups/ne-dv-webcm-spl-rg/providers/Microsoft.Web/hostingEnvironments/testnu2009"
-          }
+            "id": "[resourceId('Microsoft.Web/hostingEnvironments',parameters('appServiceEnvironmentName'))]"
+        }
       },
       "location": "[parameters('location')]",
       "tags": {
