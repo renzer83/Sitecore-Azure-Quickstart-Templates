@@ -875,207 +875,207 @@
       "dependsOn": [
         "[resourceId('Microsoft.Resources/deployments', concat(parameters('deploymentId'), '-infrastructure'))]"
       ]
-    },
-    {
-      "apiVersion": "[variables('resourcesApiVersion')]",
-      "name": "[concat(parameters('deploymentId'), '-application')]",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(uri(parameters('templateLinkBase'), 'nested/application.json'), parameters('templateLinkAccessToken'))]"
-        },
-        "parameters": {
-          "infrastructure": {
-            "value": "[reference(concat(parameters('deploymentId'), '-infrastructure')).outputs.infrastructure.value]"
-          },
-
-          "deploymentId": {
-            "value": "[parameters('deploymentId')]"
-          },
-          "location": {
-            "value": "[parameters('location')]"
-          },
-
-          "sitecoreAdminPassword": {
-            "value": "[parameters('sitecoreAdminPassword')]"
-          },
-          "licenseXml": {
-            "value": "[parameters('licenseXml')]"
-          },
-
-          "sqlServerLogin": {
-            "value": "[parameters('sqlServerLogin')]"
-          },
-          "sqlServerPassword": {
-            "value": "[parameters('sqlServerPassword')]"
-          },
-          "coreSqlDatabaseName": {
-            "value": "[parameters('coreSqlDatabaseName')]"
-          },
-          "securitySqlDatabaseName": {
-            "value": "[parameters('securitySqlDatabaseName')]"
-          },
-          "masterSqlDatabaseName": {
-            "value": "[parameters('masterSqlDatabaseName')]"
-          },
-          "webSqlDatabaseName": {
-            "value": "[parameters('webSqlDatabaseName')]"
-          },
-          "reportingSqlDatabaseName": {
-            "value": "[parameters('reportingSqlDatabaseName')]"
-          },
-          "poolsSqlDatabaseName": {
-            "value": "[parameters('poolsSqlDatabaseName')]"
-          },
-          "tasksSqlDatabaseName": {
-            "value": "[parameters('tasksSqlDatabaseName')]"
-          },
-          "formsSqlDatabaseName": {
-            "value": "[parameters('formsSqlDatabaseName')]"
-          },
-          "exmMasterSqlDatabaseName": {
-            "value": "[parameters('exmMasterSqlDatabaseName')]"
-          },
-          "refDataSqlDatabaseName": {
-            "value": "[parameters('refDataSqlDatabaseName')]"
-          },
-          "coreSqlDatabaseUserName": {
-            "value": "[parameters('coreSqlDatabaseUserName')]"
-          },
-          "coreSqlDatabasePassword": {
-            "value": "[parameters('coreSqlDatabasePassword')]"
-          },
-          "masterSqlDatabaseUserName": {
-            "value": "[parameters('masterSqlDatabaseUserName')]"
-          },
-          "masterSqlDatabasePassword": {
-            "value": "[parameters('masterSqlDatabasePassword')]"
-          },
-          "webSqlDatabaseUserName": {
-            "value": "[parameters('webSqlDatabaseUserName')]"
-          },
-          "webSqlDatabasePassword": {
-            "value": "[parameters('webSqlDatabasePassword')]"
-          },
-          "reportingSqlDatabaseUserName": {
-            "value": "[parameters('reportingSqlDatabaseUserName')]"
-          },
-          "reportingSqlDatabasePassword": {
-            "value": "[parameters('reportingSqlDatabasePassword')]"
-          },
-          "formsSqlDatabaseUserName": {
-            "value": "[parameters('formsSqlDatabaseUserName')]"
-          },
-          "formsSqlDatabasePassword": {
-            "value": "[parameters('formsSqlDatabasePassword')]"
-          },
-          "exmMasterSqlDatabaseUserName": {
-            "value": "[parameters('exmMasterSqlDatabaseUserName')]"
-          },
-          "exmMasterSqlDatabasePassword": {
-            "value": "[parameters('exmMasterSqlDatabasePassword')]"
-          },
-          "poolsSqlDatabaseUserName": {
-            "value": "[parameters('poolsSqlDatabaseUserName')]"
-          },
-          "poolsSqlDatabasePassword": {
-            "value": "[parameters('poolsSqlDatabasePassword')]"
-          },
-          "tasksSqlDatabaseUserName": {
-            "value": "[parameters('tasksSqlDatabaseUserName')]"
-          },
-          "tasksSqlDatabasePassword": {
-            "value": "[parameters('tasksSqlDatabasePassword')]"
-          },
-          "xcRefDataSqlDatabaseUserName": {
-            "value": "[parameters('xcRefDataSqlDatabaseUserName')]"
-          },
-          "xcRefDataSqlDatabasePassword": {
-            "value": "[parameters('xcRefDataSqlDatabasePassword')]"
-          },
-          "searchServiceName": {
-            "value": "[parameters('searchServiceName')]"
-          },
-          "solrConnectionString": {
-            "value": "[parameters('solrConnectionString')]"
-          },
-          "useApplicationInsights": {
-            "value": "[parameters('useApplicationInsights')]"
-          },
-          "applicationInsightsName": {
-            "value": "[parameters('applicationInsightsName')]"
-          },
-          "storeSitecoreCountersInApplicationInsights": {
-            "value": "[parameters('storeSitecoreCountersInApplicationInsights')]"
-          },
-
-          "siWebAppName": {
-            "value": "[parameters('siWebAppName')]"
-          },
-          "singleWebAppName": {
-            "value": "[parameters('singleWebAppName')]"
-          },
-          "xcSingleWebAppName": {
-            "value": "[parameters('xcSingleWebAppName')]"
-          },
-
-          "siMsDeployPackageUrl": {
-            "value": "[parameters('siMsDeployPackageUrl')]"
-          },
-          "singleMsDeployPackageUrl": {
-            "value": "[parameters('singleMsDeployPackageUrl')]"
-          },
-          "setCompatibilityLevelMsDeployPackageUrl": {
-            "value": "[parameters('setCompatibilityLevelMsDeployPackageUrl')]"
-          },
-
-          "exmEdsProvider": {
-            "value": "[parameters('exmEdsProvider')]"
-          },
-          "exmCryptographicKey": {
-            "value": "[parameters('exmCryptographicKey')]"
-          },
-          "exmAuthenticationKey": {
-            "value": "[parameters('exmAuthenticationKey')]"
-          },
-
-          "siClientSecret": {
-            "value": "[parameters('siClientSecret')]"
-          },
-          "telerikEncryptionKey": {
-            "value": "[parameters('telerikEncryptionKey')]"
-          },
-
-          "allowInvalidClientCertificates": {
-            "value": "[parameters('allowInvalidClientCertificates')]"
-          },
-
-          "passwordSalt": {
-            "value": "[parameters('passwordSalt')]"
-          },
-
-          "nodeJsVersion": {
-            "value": "[parameters('nodeJsVersion')]"
-          },
-
-          "environmentType": {
-            "value": "[parameters('environmentType')]"
-          },
-
-          "azureServiceBusNamespaceName": {
-            "value" : "[parameters('azureServiceBusNamespaceName')]"
-          },
-          "azureServiceBusAccessKeyName": {
-            "value": "[parameters('azureServiceBusManageSharedAccessKeyName')]"
-          }
-        }
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Resources/deployments', concat(parameters('deploymentId'), '-application-xc'))]",
-        "[resourceId('Microsoft.Resources/deployments', concat(parameters('deploymentId'), '-infrastructure-asb'))]"
-      ]
     }
+    // {
+    //   "apiVersion": "[variables('resourcesApiVersion')]",
+    //   "name": "[concat(parameters('deploymentId'), '-application')]",
+    //   "type": "Microsoft.Resources/deployments",
+    //   "properties": {
+    //     "mode": "Incremental",
+    //     "templateLink": {
+    //       "uri": "[concat(uri(parameters('templateLinkBase'), 'nested/application.json'), parameters('templateLinkAccessToken'))]"
+    //     },
+    //     "parameters": {
+    //       "infrastructure": {
+    //         "value": "[reference(concat(parameters('deploymentId'), '-infrastructure')).outputs.infrastructure.value]"
+    //       },
+
+    //       "deploymentId": {
+    //         "value": "[parameters('deploymentId')]"
+    //       },
+    //       "location": {
+    //         "value": "[parameters('location')]"
+    //       },
+
+    //       "sitecoreAdminPassword": {
+    //         "value": "[parameters('sitecoreAdminPassword')]"
+    //       },
+    //       "licenseXml": {
+    //         "value": "[parameters('licenseXml')]"
+    //       },
+
+    //       "sqlServerLogin": {
+    //         "value": "[parameters('sqlServerLogin')]"
+    //       },
+    //       "sqlServerPassword": {
+    //         "value": "[parameters('sqlServerPassword')]"
+    //       },
+    //       "coreSqlDatabaseName": {
+    //         "value": "[parameters('coreSqlDatabaseName')]"
+    //       },
+    //       "securitySqlDatabaseName": {
+    //         "value": "[parameters('securitySqlDatabaseName')]"
+    //       },
+    //       "masterSqlDatabaseName": {
+    //         "value": "[parameters('masterSqlDatabaseName')]"
+    //       },
+    //       "webSqlDatabaseName": {
+    //         "value": "[parameters('webSqlDatabaseName')]"
+    //       },
+    //       "reportingSqlDatabaseName": {
+    //         "value": "[parameters('reportingSqlDatabaseName')]"
+    //       },
+    //       "poolsSqlDatabaseName": {
+    //         "value": "[parameters('poolsSqlDatabaseName')]"
+    //       },
+    //       "tasksSqlDatabaseName": {
+    //         "value": "[parameters('tasksSqlDatabaseName')]"
+    //       },
+    //       "formsSqlDatabaseName": {
+    //         "value": "[parameters('formsSqlDatabaseName')]"
+    //       },
+    //       "exmMasterSqlDatabaseName": {
+    //         "value": "[parameters('exmMasterSqlDatabaseName')]"
+    //       },
+    //       "refDataSqlDatabaseName": {
+    //         "value": "[parameters('refDataSqlDatabaseName')]"
+    //       },
+    //       "coreSqlDatabaseUserName": {
+    //         "value": "[parameters('coreSqlDatabaseUserName')]"
+    //       },
+    //       "coreSqlDatabasePassword": {
+    //         "value": "[parameters('coreSqlDatabasePassword')]"
+    //       },
+    //       "masterSqlDatabaseUserName": {
+    //         "value": "[parameters('masterSqlDatabaseUserName')]"
+    //       },
+    //       "masterSqlDatabasePassword": {
+    //         "value": "[parameters('masterSqlDatabasePassword')]"
+    //       },
+    //       "webSqlDatabaseUserName": {
+    //         "value": "[parameters('webSqlDatabaseUserName')]"
+    //       },
+    //       "webSqlDatabasePassword": {
+    //         "value": "[parameters('webSqlDatabasePassword')]"
+    //       },
+    //       "reportingSqlDatabaseUserName": {
+    //         "value": "[parameters('reportingSqlDatabaseUserName')]"
+    //       },
+    //       "reportingSqlDatabasePassword": {
+    //         "value": "[parameters('reportingSqlDatabasePassword')]"
+    //       },
+    //       "formsSqlDatabaseUserName": {
+    //         "value": "[parameters('formsSqlDatabaseUserName')]"
+    //       },
+    //       "formsSqlDatabasePassword": {
+    //         "value": "[parameters('formsSqlDatabasePassword')]"
+    //       },
+    //       "exmMasterSqlDatabaseUserName": {
+    //         "value": "[parameters('exmMasterSqlDatabaseUserName')]"
+    //       },
+    //       "exmMasterSqlDatabasePassword": {
+    //         "value": "[parameters('exmMasterSqlDatabasePassword')]"
+    //       },
+    //       "poolsSqlDatabaseUserName": {
+    //         "value": "[parameters('poolsSqlDatabaseUserName')]"
+    //       },
+    //       "poolsSqlDatabasePassword": {
+    //         "value": "[parameters('poolsSqlDatabasePassword')]"
+    //       },
+    //       "tasksSqlDatabaseUserName": {
+    //         "value": "[parameters('tasksSqlDatabaseUserName')]"
+    //       },
+    //       "tasksSqlDatabasePassword": {
+    //         "value": "[parameters('tasksSqlDatabasePassword')]"
+    //       },
+    //       "xcRefDataSqlDatabaseUserName": {
+    //         "value": "[parameters('xcRefDataSqlDatabaseUserName')]"
+    //       },
+    //       "xcRefDataSqlDatabasePassword": {
+    //         "value": "[parameters('xcRefDataSqlDatabasePassword')]"
+    //       },
+    //       "searchServiceName": {
+    //         "value": "[parameters('searchServiceName')]"
+    //       },
+    //       "solrConnectionString": {
+    //         "value": "[parameters('solrConnectionString')]"
+    //       },
+    //       "useApplicationInsights": {
+    //         "value": "[parameters('useApplicationInsights')]"
+    //       },
+    //       "applicationInsightsName": {
+    //         "value": "[parameters('applicationInsightsName')]"
+    //       },
+    //       "storeSitecoreCountersInApplicationInsights": {
+    //         "value": "[parameters('storeSitecoreCountersInApplicationInsights')]"
+    //       },
+
+    //       "siWebAppName": {
+    //         "value": "[parameters('siWebAppName')]"
+    //       },
+    //       "singleWebAppName": {
+    //         "value": "[parameters('singleWebAppName')]"
+    //       },
+    //       "xcSingleWebAppName": {
+    //         "value": "[parameters('xcSingleWebAppName')]"
+    //       },
+
+    //       "siMsDeployPackageUrl": {
+    //         "value": "[parameters('siMsDeployPackageUrl')]"
+    //       },
+    //       "singleMsDeployPackageUrl": {
+    //         "value": "[parameters('singleMsDeployPackageUrl')]"
+    //       },
+    //       "setCompatibilityLevelMsDeployPackageUrl": {
+    //         "value": "[parameters('setCompatibilityLevelMsDeployPackageUrl')]"
+    //       },
+
+    //       "exmEdsProvider": {
+    //         "value": "[parameters('exmEdsProvider')]"
+    //       },
+    //       "exmCryptographicKey": {
+    //         "value": "[parameters('exmCryptographicKey')]"
+    //       },
+    //       "exmAuthenticationKey": {
+    //         "value": "[parameters('exmAuthenticationKey')]"
+    //       },
+
+    //       "siClientSecret": {
+    //         "value": "[parameters('siClientSecret')]"
+    //       },
+    //       "telerikEncryptionKey": {
+    //         "value": "[parameters('telerikEncryptionKey')]"
+    //       },
+
+    //       "allowInvalidClientCertificates": {
+    //         "value": "[parameters('allowInvalidClientCertificates')]"
+    //       },
+
+    //       "passwordSalt": {
+    //         "value": "[parameters('passwordSalt')]"
+    //       },
+
+    //       "nodeJsVersion": {
+    //         "value": "[parameters('nodeJsVersion')]"
+    //       },
+
+    //       "environmentType": {
+    //         "value": "[parameters('environmentType')]"
+    //       },
+
+    //       "azureServiceBusNamespaceName": {
+    //         "value" : "[parameters('azureServiceBusNamespaceName')]"
+    //       },
+    //       "azureServiceBusAccessKeyName": {
+    //         "value": "[parameters('azureServiceBusManageSharedAccessKeyName')]"
+    //       }
+    //     }
+    //   },
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Resources/deployments', concat(parameters('deploymentId'), '-application-xc'))]",
+    //     "[resourceId('Microsoft.Resources/deployments', concat(parameters('deploymentId'), '-infrastructure-asb'))]"
+    //   ]
+    // }
     // {
     //   "apiVersion": "[variables('resourcesApiVersion')]",
     //   "name": "[concat(parameters('deploymentId'), '-application-xc')]",
