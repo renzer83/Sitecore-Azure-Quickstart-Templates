@@ -250,60 +250,60 @@
         "logicalName": "[variables('sitecoreTags').single]"
       }
     },
-    // {
-    //   "type": "Microsoft.Web/sites",
-    //   "name": "[variables('siWebAppNameTidy')]",
-    //   "location": "[parameters('location')]",
-    //   "apiVersion": "[variables('webApiVersion')]",
-    //   "properties": {
-    //     "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]",
-    //     "siteConfig": {
-    //       "use32BitWorkerProcess": false,
-    //       "alwaysOn": true,
-    //       "phpVersion": "",
-    //       "defaultDocuments": [
-    //         "index.html"
-    //       ],
-    //       "metadata": [
-    //         {
-    //           "name": "CURRENT_STACK",
-    //           "value": "dotnetcore"
-    //         }
-    //       ]
-    //     }
-    //   },
-    //   "dependsOn": [
-    //     "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
-    //   ],
-    //   "tags": {
-    //     "provider": "[variables('sitecoreTags').provider]",
-    //     "logicalName": "[variables('sitecoreTags').si]"
-    //   }
-    // },
-    // {
-    //   "type": "Microsoft.Web/sites",
-    //   "name": "[variables('singleWebAppNameTidy')]",
-    //   "apiVersion": "[variables('webApiVersion')]",
-    //   "properties": {
-    //     "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]",
-    //     "siteConfig": {
-    //       "use32BitWorkerProcess": false,
-    //       "alwaysOn": true,
-    //       "phpVersion": "",
-    //       "defaultDocuments": [
-    //         "index.html"
-    //       ]
-    //     }
-    //   },
-    //   "location": "[parameters('location')]",
-    //   "dependsOn": [
-    //     "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
-    //   ],
-    //   "tags": {
-    //     "provider": "[variables('sitecoreTags').provider]",
-    //     "logicalName": "[variables('sitecoreTags').single]"
-    //   }
-    // },
+    {
+      "type": "Microsoft.Web/sites",
+      "name": "[variables('siWebAppNameTidy')]",
+      "location": "[parameters('location')]",
+      "apiVersion": "[variables('webApiVersion')]",
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]",
+        "siteConfig": {
+          "use32BitWorkerProcess": false,
+          "alwaysOn": true,
+          "phpVersion": "",
+          "defaultDocuments": [
+            "index.html"
+          ],
+          "metadata": [
+            {
+              "name": "CURRENT_STACK",
+              "value": "dotnetcore"
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
+      ],
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]",
+        "logicalName": "[variables('sitecoreTags').si]"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "name": "[variables('singleWebAppNameTidy')]",
+      "apiVersion": "[variables('webApiVersion')]",
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]",
+        "siteConfig": {
+          "use32BitWorkerProcess": false,
+          "alwaysOn": true,
+          "phpVersion": "",
+          "defaultDocuments": [
+            "index.html"
+          ]
+        }
+      },
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
+      ],
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]",
+        "logicalName": "[variables('sitecoreTags').single]"
+      }
+    },
     // {
     //   "type": "Microsoft.Sql/servers",
     //   "apiVersion": "[variables('dbApiVersion')]",
