@@ -627,12 +627,6 @@
           "uri": "[concat(uri(parameters('templateLinkBase'), 'nested/infrastructure.json'), parameters('templateLinkAccessToken'))]"
         },
         "parameters": {
-          "ASE-Name":{
-            "value": "[parameters('ASE-Name')]"
-          },
-          "ASE-hostingEnvironmentId":{
-            "value": "[parameters('ASE-hostingEnvironmentId')]"
-          },
           "deploymentId": {
             "value": "[parameters('deploymentId')]"
           },
