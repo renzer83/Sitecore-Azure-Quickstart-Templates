@@ -240,7 +240,7 @@
       "properties": {
         "name": "[variables('singleHostingPlanNameTidy')]",
         "hostingEnvironmentProfile": {
-          "id": "[resourceId('Microsoft.Web/hostingEnvironments/','testnu2009')]"
+          "id": "[resourceId('/subscriptions/42b43065-5940-46a9-a451-de1516df047c/resourceGroups/ne-dv-webcm-spl-rg/providers/Microsoft.Web/hostingEnvironments/testnu2009')]"
           }
       },
       "location": "[parameters('location')]",
