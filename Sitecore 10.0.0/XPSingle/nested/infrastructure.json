@@ -231,7 +231,6 @@
       "type": "Microsoft.Web/serverfarms",
       "name": "[variables('singleHostingPlanNameTidy')]",
       "apiVersion": "[variables('serverFarmApiVersion')]",
-      "kind": "Windows",
       "sku": {
         "tier": "Isolated",
         "size": "I1",
