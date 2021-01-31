@@ -910,7 +910,6 @@
           "sqlServerPassword": {
             "value": "[parameters('sqlServerPassword')]"
           },
-
           "coreSqlDatabaseName": {
             "value": "[parameters('coreSqlDatabaseName')]"
           },
@@ -998,7 +997,6 @@
           "searchServiceName": {
             "value": "[parameters('searchServiceName')]"
           },
-
           "solrConnectionString": {
             "value": "[parameters('solrConnectionString')]"
           },
