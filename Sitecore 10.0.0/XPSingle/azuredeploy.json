@@ -1002,12 +1002,6 @@
           "solrConnectionString": {
             "value": "[parameters('solrConnectionString')]"
           },
-          "ASE-Name": {
-            "value": "[parameters('ASE-Name')]"
-          },
-          "ASE-hostingEnvironmentId": {
-            "value": "[parameters('ASE-hostingEnvironmentId')]"
-          },
           "useApplicationInsights": {
             "value": "[parameters('useApplicationInsights')]"
           },
