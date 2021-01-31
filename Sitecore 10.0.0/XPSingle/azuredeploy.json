@@ -348,15 +348,6 @@
       "type": "securestring",
       "defaultValue": "[parameters('solrConnectionString')]"
     },
-
-    "ASE-Name": {
-      "type": "string",
-      "defaultValue": "[parameters('ASE-Name')]"
-    },
-    "ASE-hostingEnvironmentId": {
-      "type": "string",
-      "defaultValue": "[parameters('ASE-hostingEnvironmentId')]"
-    },
     "machineLearningServerConnectionString": {
       "type": "securestring",
       "defaultValue": ""
