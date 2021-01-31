@@ -755,50 +755,50 @@
       "dependsOn": [
         "[concat(parameters('deploymentId'), '-prerequisites')]"
       ]
+    },
+    {
+      "apiVersion": "[variables('resourcesApiVersion')]",
+      "name": "[concat(parameters('deploymentId'), '-infrastructure-asb')]",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(uri(parameters('templateLinkBase'), 'nested/infrastructure-asb.json'), parameters('templateLinkAccessToken'))]"
+        },
+        "parameters": {
+          "deploymentId": {
+            "value": "[parameters('deploymentId')]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "templateLinkAccessToken": {
+            "value": "[parameters('templateLinkAccessToken')]"
+          },
+          "azureServiceBusQueues": {
+            "value": "[parameters('azureServiceBusQueues')]"
+          },
+          "azureServiceBusTopics": {
+            "value": "[parameters('azureServiceBusTopics')]"
+          },
+          "azureServiceBusSubscriptions": {
+            "value": "[parameters('azureServiceBusSubscriptions')]"
+          },
+          "azureServiceBusSkuName": {
+            "value": "[parameters('azureServiceBusSkuName')]"
+          },
+          "azureServiceBusManageSharedAccessKeyName": {
+            "value": "[parameters('azureServiceBusManageSharedAccessKeyName')]"
+          },
+          "azureServiceBusSharedAccessKeyName": {
+            "value": "[parameters('azureServiceBusSharedAccessKeyName')]"
+          },
+          "azureServiceBusNamespaceName": {
+            "value": "[parameters('azureServiceBusNamespaceName')]"
+          }
+        }
+      }
     }
-    // {
-    //   "apiVersion": "[variables('resourcesApiVersion')]",
-    //   "name": "[concat(parameters('deploymentId'), '-infrastructure-asb')]",
-    //   "type": "Microsoft.Resources/deployments",
-    //   "properties": {
-    //     "mode": "Incremental",
-    //     "templateLink": {
-    //       "uri": "[concat(uri(parameters('templateLinkBase'), 'nested/infrastructure-asb.json'), parameters('templateLinkAccessToken'))]"
-    //     },
-    //     "parameters": {
-    //       "deploymentId": {
-    //         "value": "[parameters('deploymentId')]"
-    //       },
-    //       "location": {
-    //         "value": "[parameters('location')]"
-    //       },
-    //       "templateLinkAccessToken": {
-    //         "value": "[parameters('templateLinkAccessToken')]"
-    //       },
-    //       "azureServiceBusQueues": {
-    //         "value": "[parameters('azureServiceBusQueues')]"
-    //       },
-    //       "azureServiceBusTopics": {
-    //         "value": "[parameters('azureServiceBusTopics')]"
-    //       },
-    //       "azureServiceBusSubscriptions": {
-    //         "value": "[parameters('azureServiceBusSubscriptions')]"
-    //       },
-    //       "azureServiceBusSkuName": {
-    //         "value": "[parameters('azureServiceBusSkuName')]"
-    //       },
-    //       "azureServiceBusManageSharedAccessKeyName": {
-    //         "value": "[parameters('azureServiceBusManageSharedAccessKeyName')]"
-    //       },
-    //       "azureServiceBusSharedAccessKeyName": {
-    //         "value": "[parameters('azureServiceBusSharedAccessKeyName')]"
-    //       },
-    //       "azureServiceBusNamespaceName": {
-    //         "value": "[parameters('azureServiceBusNamespaceName')]"
-    //       }
-    //     }
-    //   }
-    // },
     // {
     //   "apiVersion": "[variables('resourcesApiVersion')]",
     //   "name": "[concat(parameters('deploymentId'), '-infrastructure-xc')]",
