@@ -8,8 +8,6 @@
     "searchApiVersion": "2015-08-19",
     "applicationInsightsApiVersion": "2015-05-01",
     "certificateApiVersion": "2014-11-01",
-    "ASENAME": "[parameters('ASE-Name')]",
-    "ASEHOSTID": "[parameters('ASE-hostingEnvironmentId')]",
     "sqlServerNameTidy": "[toLower(trim(parameters('sqlServerName')))]",
 
     "coreSqlDatabaseNameTidy": "[toLower(trim(parameters('coreSqlDatabaseName')))]",
@@ -45,14 +43,6 @@
     }
   },
   "parameters": {
-    "ASE-hostingEnvironmentId":{
-      "type":"string",
-      "defaultValue": "[parameters('ASE-hostingEnvironmentId')]"
-    },
-    "ASE-Name":{
-      "type": "string",
-      "defaultValue": "[parameters('ASE-Name')]"
-    },
     "deploymentId": {
       "type": "string",
       "defaultValue": "[resourceGroup().name]"
