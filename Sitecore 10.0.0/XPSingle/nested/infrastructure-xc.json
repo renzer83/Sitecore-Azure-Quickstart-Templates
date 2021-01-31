@@ -3,6 +3,7 @@
   "contentVersion": "1.0.0.0",
   "variables": {
     "webApiVersion": "2018-02-01",
+    "appServiceEnvironmentName": "testnu2009",
     "serverFarmApiVersion": "2018-02-01",
     "dbApiVersion": "2014-04-01-preview",
 
@@ -148,11 +149,16 @@
       "name": "[variables('xcSingleHostingPlanNameTidy')]",
       "apiVersion": "[variables('serverFarmApiVersion')]",
       "sku": {
-        "name": "[parameters('xcSingleHostingPlanSkuName')]",
-        "capacity": "[parameters('xcSingleHostingPlanSkuCapacity')]"
+        "name": "I1",
+        "tier": "Isolated",
+        "size": "I1", 
+        "capacity": "[parameters('xcSingleHostingPlanSkuCapacity')]" 
       },
       "properties": {
-        "name": "[variables('xcSingleHostingPlanNameTidy')]"
+        "name": "[variables('xcSingleHostingPlanNameTidy')]",
+        "hostingEnvironmentProfile": {
+            "id": "[resourceId('Microsoft.Web/hostingEnvironments',variables('appServiceEnvironmentName'))]"
+      }
       },
       "location": "[parameters('location')]",
       "tags": {
