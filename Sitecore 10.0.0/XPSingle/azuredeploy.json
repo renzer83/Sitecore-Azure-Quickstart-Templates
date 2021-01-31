@@ -875,7 +875,7 @@
       "dependsOn": [
         "[resourceId('Microsoft.Resources/deployments', concat(parameters('deploymentId'), '-infrastructure'))]"
       ]
-    }
+    },
     {
       "apiVersion": "[variables('resourcesApiVersion')]",
       "name": "[concat(parameters('deploymentId'), '-application')]",
