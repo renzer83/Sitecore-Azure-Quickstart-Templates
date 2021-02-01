@@ -379,13 +379,13 @@
       "apiVersion": "[variables('dbApiVersion')]",
       "dependsOn": [ "[resourceId('Microsoft.Sql/managedInstances', variables('sqlServerNameTidy'))]" ]
     },    
-    {
-      "name": "[concat(variables('sqlServerNameTidy'), '/', variables('exmMasterSqlDatabaseNameTidy'))]",
-      "type": "Microsoft.Sql/managedInstances/databases",
-      "location": "[parameters('location')]",
-      "apiVersion": "[variables('dbApiVersion')]",
-      "dependsOn": [ "[resourceId('Microsoft.Sql/managedInstances', variables('sqlServerNameTidy'))]" ]
-    },             
+    // {
+    //   "name": "[concat(variables('sqlServerNameTidy'), '/', variables('exmMasterSqlDatabaseNameTidy'))]",
+    //   "type": "Microsoft.Sql/managedInstances/databases",
+    //   "location": "[parameters('location')]",
+    //   "apiVersion": "[variables('dbApiVersion')]",
+    //   "dependsOn": [ "[resourceId('Microsoft.Sql/managedInstances', variables('sqlServerNameTidy'))]" ]
+    // },             
     // {
     //   "type": "Microsoft.Sql/servers",
     //   "apiVersion": "[variables('dbApiVersion')]",
