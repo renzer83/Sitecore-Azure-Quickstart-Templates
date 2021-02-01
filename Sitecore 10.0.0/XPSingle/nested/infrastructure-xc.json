@@ -5,7 +5,7 @@
     "webApiVersion": "2018-02-01",
     "appServiceEnvironmentName": "testnu2009",
     "serverFarmApiVersion": "2018-02-01",
-    "dbApiVersion": "2014-04-01-preview",
+    "dbApiVersion": "2020-02-02-preview",                    
 
     "sqlServerNameTidy": "[toLower(trim(parameters('sqlServerName')))]",
 
