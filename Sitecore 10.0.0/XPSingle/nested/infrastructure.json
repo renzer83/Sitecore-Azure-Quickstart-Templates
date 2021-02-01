@@ -3,11 +3,9 @@
   "contentVersion": "1.0.0.0",
   "variables": {
     "appServiceEnvironmentName": "testnu2009",
-    "vnetResourceName": "new",
-    "managedInstanceSubnetName": "managedinstance",
     "webApiVersion": "2018-02-01",
     "serverFarmApiVersion": "2018-02-01",
-    "dbApiVersion": "2020-02-02-preview",
+    "dbApiVersion": "2014-04-01-preview",
     "searchApiVersion": "2015-08-19",
     "applicationInsightsApiVersion": "2015-05-01",
     "certificateApiVersion": "2014-11-01",
@@ -329,7 +327,7 @@
           "licenseType": "BasePrice",
           "collation": "SQL_Latin1_General_CP1_CI_AS",
           "publicDataEndpointEnabled": true,
-          "subnetId": "[resourceId(parameters('deploymentId'),'Microsoft.Network/virtualNetworks/subnets',variables('vnetResourceName'),variables('managedInstanceSubnetName'))]"
+          "subnetId": "[resourceId('ne-dv-webcm-spl-rg','Microsoft.Network/virtualNetworks/subnets','new','new')]"
       }  
     },
     {
@@ -373,14 +371,21 @@
       "location": "[parameters('location')]",
       "apiVersion": "[variables('dbApiVersion')]",
       "dependsOn": [ "[resourceId('Microsoft.Sql/managedInstances', variables('sqlServerNameTidy'))]" ]
-    },  
+    },       
     {
       "name": "[concat(variables('sqlServerNameTidy'), '/', variables('exmMasterSqlDatabaseNameTidy'))]",
       "type": "Microsoft.Sql/managedInstances/databases",
       "location": "[parameters('location')]",
       "apiVersion": "[variables('dbApiVersion')]",
       "dependsOn": [ "[resourceId('Microsoft.Sql/managedInstances', variables('sqlServerNameTidy'))]" ]
-    }             
+    },    
+    // {
+    //   "name": "[concat(variables('sqlServerNameTidy'), '/', variables('exmMasterSqlDatabaseNameTidy'))]",
+    //   "type": "Microsoft.Sql/managedInstances/databases",
+    //   "location": "[parameters('location')]",
+    //   "apiVersion": "[variables('dbApiVersion')]",
+    //   "dependsOn": [ "[resourceId('Microsoft.Sql/managedInstances', variables('sqlServerNameTidy'))]" ]
+    // },             
     // {
     //   "type": "Microsoft.Sql/servers",
     //   "apiVersion": "[variables('dbApiVersion')]",
@@ -617,72 +622,72 @@
     //     }
     //   ]
     // },
-    // {
-    //   "type": "Microsoft.Search/searchServices",
-    //   "condition": "[parameters('deployAzureSearch')]",
-    //   "apiVersion": "[variables('searchApiVersion')]",
-    //   "name": "[variables('searchServiceNameTidy')]",
-    //   "location": "[if(parameters('deployAzureSearch'), parameters('searchServiceLocation'), 'westus')]",
-    //   "sku": {
-    //     "name": "[toLower(parameters('searchServiceSkuName'))]"
-    //   },
-    //   "properties": {
-    //     "replicaCount": "[parameters('searchServiceReplicaCount')]",
-    //     "partitionCount": "[parameters('searchServicePartitionCount')]"
-    //   },
-    //   "tags": {
-    //     "provider": "[variables('sitecoreTags').provider]"
-    //   }
-    // },
-    // {
-    //   "type": "Microsoft.Insights/Components",
-    //   "condition": "[parameters('useApplicationInsights')]",
-    //   "name": "[variables('applicationInsightsNameTidy')]",
-    //   "apiVersion": "[variables('applicationInsightsApiVersion')]",
-    //   "location": "[parameters('applicationInsightsLocation')]",
-    //   "properties": {
-    //     "ApplicationId": "[variables('applicationInsightsNameTidy')]",
-    //     "Application_Type": "web"
-    //   },
-    //   "tags": {
-    //     "provider": "[variables('sitecoreTags').provider]"
-    //   }
-    // },
-    // {
-    //   "type": "Microsoft.Insights/Components/CurrentBillingFeatures",
-    //   "condition": "[parameters('useApplicationInsights')]",
-    //   "name": "[concat(variables('applicationInsightsNameTidy'), '/', variables('applicationInsightsPricePlanTidy'))]",
-    //   "location": "[parameters('applicationInsightsLocation')]",
-    //   "apiVersion": "[variables('applicationInsightsApiVersion')]",
-    //   "properties": {
-    //     "CurrentBillingFeatures": "[parameters('applicationInsightsCurrentBillingFeatures')]",
-    //     "DataVolumeCap": {
-    //       "Cap": "[float(parameters('applicationInsightsDataVolumeCap'))]"
-    //     }
-    //   },
-    //   "dependsOn": [
-    //     "[resourceId('Microsoft.Insights/Components', variables('applicationInsightsNameTidy'))]"
-    //   ],
-    //   "tags": {
-    //     "provider": "[variables('sitecoreTags').provider]"
-    //   }
-    // },
-    // {
-    //   "type": "Microsoft.Web/certificates",
-    //   "name": "[variables('authCertificateNameTidy')]",
-    //   "apiVersion": "[variables('certificateApiVersion')]",
-    //   "location": "[parameters('location')]",
-    //   "dependsOn": [
-    //     "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
-    //   ],
-    //   "properties": {
-    //     "password": "[parameters('authCertificatePassword')]",
-    //     "pfxBlob": "[parameters('authCertificateBlob')]"
-    //   },
-    //   "tags": {
-    //     "provider": "[variables('sitecoreTags').provider]"
-    //   }
-    // }
+    {
+      "type": "Microsoft.Search/searchServices",
+      "condition": "[parameters('deployAzureSearch')]",
+      "apiVersion": "[variables('searchApiVersion')]",
+      "name": "[variables('searchServiceNameTidy')]",
+      "location": "[if(parameters('deployAzureSearch'), parameters('searchServiceLocation'), 'westus')]",
+      "sku": {
+        "name": "[toLower(parameters('searchServiceSkuName'))]"
+      },
+      "properties": {
+        "replicaCount": "[parameters('searchServiceReplicaCount')]",
+        "partitionCount": "[parameters('searchServicePartitionCount')]"
+      },
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]"
+      }
+    },
+    {
+      "type": "Microsoft.Insights/Components",
+      "condition": "[parameters('useApplicationInsights')]",
+      "name": "[variables('applicationInsightsNameTidy')]",
+      "apiVersion": "[variables('applicationInsightsApiVersion')]",
+      "location": "[parameters('applicationInsightsLocation')]",
+      "properties": {
+        "ApplicationId": "[variables('applicationInsightsNameTidy')]",
+        "Application_Type": "web"
+      },
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]"
+      }
+    },
+    {
+      "type": "Microsoft.Insights/Components/CurrentBillingFeatures",
+      "condition": "[parameters('useApplicationInsights')]",
+      "name": "[concat(variables('applicationInsightsNameTidy'), '/', variables('applicationInsightsPricePlanTidy'))]",
+      "location": "[parameters('applicationInsightsLocation')]",
+      "apiVersion": "[variables('applicationInsightsApiVersion')]",
+      "properties": {
+        "CurrentBillingFeatures": "[parameters('applicationInsightsCurrentBillingFeatures')]",
+        "DataVolumeCap": {
+          "Cap": "[float(parameters('applicationInsightsDataVolumeCap'))]"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Insights/Components', variables('applicationInsightsNameTidy'))]"
+      ],
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]"
+      }
+    },
+    {
+      "type": "Microsoft.Web/certificates",
+      "name": "[variables('authCertificateNameTidy')]",
+      "apiVersion": "[variables('certificateApiVersion')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
+      ],
+      "properties": {
+        "password": "[parameters('authCertificatePassword')]",
+        "pfxBlob": "[parameters('authCertificateBlob')]"
+      },
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]"
+      }
+    }
   ],
   "outputs": {
     "infrastructure": {
