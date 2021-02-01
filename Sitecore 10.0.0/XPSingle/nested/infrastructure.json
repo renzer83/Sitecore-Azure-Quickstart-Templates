@@ -329,7 +329,7 @@
           "licenseType": "BasePrice",
           "collation": "SQL_Latin1_General_CP1_CI_AS",
           "publicDataEndpointEnabled": true,
-          "subnetId": "[resourceId(resourceGroup(),'Microsoft.Network/virtualNetworks/subnets',variables('vnetResourceName'),variables('managedInstanceSubnetName'))]"
+          "subnetId": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks/subnets',variables('vnetResourceName'),variables('managedInstanceSubnetName'))]"
       }  
     },
     {
