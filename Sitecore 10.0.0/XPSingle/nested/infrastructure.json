@@ -5,7 +5,9 @@
     "appServiceEnvironmentName": "testnu2009",
     "webApiVersion": "2018-02-01",
     "serverFarmApiVersion": "2018-02-01",
-    "dbApiVersion": "2014-04-01-preview",
+    "dbApiVersion": "2020-02-02-preview",                    
+    "vnetResourceName": "new",
+    "managedInstanceSubnetName": "managedinstance",
     "searchApiVersion": "2015-08-19",
     "applicationInsightsApiVersion": "2015-05-01",
     "certificateApiVersion": "2014-11-01",
@@ -327,7 +329,7 @@
           "licenseType": "BasePrice",
           "collation": "SQL_Latin1_General_CP1_CI_AS",
           "publicDataEndpointEnabled": true,
-          "subnetId": "[resourceId('ne-dv-webcm-spl-rg','Microsoft.Network/virtualNetworks/subnets','new','new')]"
+          "subnetId": "[resourceId(resourceGroup(),'Microsoft.Network/virtualNetworks/subnets',variables('vnetResourceName'),variables('managedInstanceSubnetName'))]"
       }  
     },
     {
