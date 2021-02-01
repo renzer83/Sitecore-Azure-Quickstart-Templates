@@ -380,7 +380,7 @@
       "location": "[parameters('location')]",
       "apiVersion": "[variables('dbApiVersion')]",
       "dependsOn": [ "[resourceId('Microsoft.Sql/managedInstances', variables('sqlServerNameTidy'))]" ]
-    }             
+    },     
     // {
     //   "type": "Microsoft.Sql/servers",
     //   "apiVersion": "[variables('dbApiVersion')]",
@@ -667,22 +667,22 @@
     //     "provider": "[variables('sitecoreTags').provider]"
     //   }
     // },
-    // {
-    //   "type": "Microsoft.Web/certificates",
-    //   "name": "[variables('authCertificateNameTidy')]",
-    //   "apiVersion": "[variables('certificateApiVersion')]",
-    //   "location": "[parameters('location')]",
-    //   "dependsOn": [
-    //     "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
-    //   ],
-    //   "properties": {
-    //     "password": "[parameters('authCertificatePassword')]",
-    //     "pfxBlob": "[parameters('authCertificateBlob')]"
-    //   },
-    //   "tags": {
-    //     "provider": "[variables('sitecoreTags').provider]"
-    //   }
-    // }
+    {
+      "type": "Microsoft.Web/certificates",
+      "name": "[variables('authCertificateNameTidy')]",
+      "apiVersion": "[variables('certificateApiVersion')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
+      ],
+      "properties": {
+        "password": "[parameters('authCertificatePassword')]",
+        "pfxBlob": "[parameters('authCertificateBlob')]"
+      },
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]"
+      }
+    }
   ],
   "outputs": {
     "infrastructure": {
