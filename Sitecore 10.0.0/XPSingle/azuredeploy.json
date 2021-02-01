@@ -798,84 +798,84 @@
           }
         }
       }
-    }
-//     {
-//       "apiVersion": "[variables('resourcesApiVersion')]",
-//       "name": "[concat(parameters('deploymentId'), '-infrastructure-xc')]",
-//       "type": "Microsoft.Resources/deployments",
-//       "properties": {
-//         "mode": "Incremental",
-//         "templateLink": {
-//           "uri": "[concat(uri(parameters('templateLinkBase'), 'nested/infrastructure-xc.json'), parameters('templateLinkAccessToken'))]"
-//         },
-//         "parameters": {
-//           "deploymentId": {
-//             "value": "[parameters('deploymentId')]"
-//           },
-//           "location": {
-//             "value": "[parameters('location')]"
-//           },
+    },
+    {
+      "apiVersion": "[variables('resourcesApiVersion')]",
+      "name": "[concat(parameters('deploymentId'), '-infrastructure-xc')]",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(uri(parameters('templateLinkBase'), 'nested/infrastructure-xc.json'), parameters('templateLinkAccessToken'))]"
+        },
+        "parameters": {
+          "deploymentId": {
+            "value": "[parameters('deploymentId')]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
+          },
 
-//           "sqlServerName": {
-//             "value": "[parameters('sqlServerName')]"
-//           },
-//           "sqlDatabaseCollation": {
-//             "value": "[parameters('sqlDatabaseCollation')]"
-//           },
-//           "sqlDatabaseEdition": {
-//             "value": "[parameters('sqlDatabaseEdition')]"
-//           },
-//           "sqlDatabaseMaxSize": {
-//             "value": "[parameters('sqlDatabaseMaxSize')]"
-//           },
-//           "sqlBasicDatabaseServiceObjectiveLevel": {
-//             "value": "[parameters('sqlBasicDatabaseServiceObjectiveLevel')]"
-//           },
+          "sqlServerName": {
+            "value": "[parameters('sqlServerName')]"
+          },
+          "sqlDatabaseCollation": {
+            "value": "[parameters('sqlDatabaseCollation')]"
+          },
+          "sqlDatabaseEdition": {
+            "value": "[parameters('sqlDatabaseEdition')]"
+          },
+          "sqlDatabaseMaxSize": {
+            "value": "[parameters('sqlDatabaseMaxSize')]"
+          },
+          "sqlBasicDatabaseServiceObjectiveLevel": {
+            "value": "[parameters('sqlBasicDatabaseServiceObjectiveLevel')]"
+          },
 
-//           "shardMapManagerSqlDatabaseName": {
-//             "value": "[parameters('shardMapManagerSqlDatabaseName')]"
-//           },
-//           "shard0SqlDatabaseName": {
-//             "value": "[parameters('shard0SqlDatabaseName')]"
-//           },
-//           "shard1SqlDatabaseName": {
-//             "value": "[parameters('shard1SqlDatabaseName')]"
-//           },
-//           "refDataSqlDatabaseName": {
-//             "value": "[parameters('refDataSqlDatabaseName')]"
-//           },
-//           "maSqlDatabaseName": {
-//             "value": "[parameters('maSqlDatabaseName')]"
-//           },
-//           "processingEngineTasksSqlDatabaseName": {
-//             "value": "[parameters('processingEngineTasksSqlDatabaseName')]"
-//           },
-//           "processingEngineStorageSqlDatabaseName": {
-//             "value": "[parameters('processingEngineStorageSqlDatabaseName')]"
-//           },
-//           "reportingSqlDatabaseName": {
-//             "value": "[parameters('reportingSqlDatabaseName')]"
-//           },
+          "shardMapManagerSqlDatabaseName": {
+            "value": "[parameters('shardMapManagerSqlDatabaseName')]"
+          },
+          "shard0SqlDatabaseName": {
+            "value": "[parameters('shard0SqlDatabaseName')]"
+          },
+          "shard1SqlDatabaseName": {
+            "value": "[parameters('shard1SqlDatabaseName')]"
+          },
+          "refDataSqlDatabaseName": {
+            "value": "[parameters('refDataSqlDatabaseName')]"
+          },
+          "maSqlDatabaseName": {
+            "value": "[parameters('maSqlDatabaseName')]"
+          },
+          "processingEngineTasksSqlDatabaseName": {
+            "value": "[parameters('processingEngineTasksSqlDatabaseName')]"
+          },
+          "processingEngineStorageSqlDatabaseName": {
+            "value": "[parameters('processingEngineStorageSqlDatabaseName')]"
+          },
+          "reportingSqlDatabaseName": {
+            "value": "[parameters('reportingSqlDatabaseName')]"
+          },
 
-//           "xcSingleHostingPlanName": {
-//             "value": "[parameters('xcSingleHostingPlanName')]"
-//           },
-//           "xcSingleHostingPlanSkuName": {
-//             "value": "[parameters('xcSingleHostingPlanSkuName')]"
-//           },
-//           "xcSingleHostingPlanSkuCapacity": {
-//             "value": "[parameters('xcSingleHostingPlanSkuCapacity')]"
-//           },
+          "xcSingleHostingPlanName": {
+            "value": "[parameters('xcSingleHostingPlanName')]"
+          },
+          "xcSingleHostingPlanSkuName": {
+            "value": "[parameters('xcSingleHostingPlanSkuName')]"
+          },
+          "xcSingleHostingPlanSkuCapacity": {
+            "value": "[parameters('xcSingleHostingPlanSkuCapacity')]"
+          },
 
-//           "xcSingleWebAppName": {
-//             "value": "[parameters('xcSingleWebAppName')]"
-//           }
-//         }
-//       },
-//       "dependsOn": [
-//         "[resourceId('Microsoft.Resources/deployments', concat(parameters('deploymentId'), '-infrastructure'))]"
-//       ]
-//     },
+          "xcSingleWebAppName": {
+            "value": "[parameters('xcSingleWebAppName')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', concat(parameters('deploymentId'), '-infrastructure'))]"
+      ]
+    },
 //     {
 //       "apiVersion": "[variables('resourcesApiVersion')]",
 //       "name": "[concat(parameters('deploymentId'), '-application')]",
