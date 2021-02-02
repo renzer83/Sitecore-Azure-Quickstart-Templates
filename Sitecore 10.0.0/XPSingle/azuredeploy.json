@@ -1072,7 +1072,7 @@
         }
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Resources/deployments', concat(parameters('deploymentId'), '-application-xc'))]",
+        // "[resourceId('Microsoft.Resources/deployments', concat(parameters('deploymentId'), '-application-xc'))]",
         "[resourceId('Microsoft.Resources/deployments', concat(parameters('deploymentId'), '-infrastructure-asb'))]"
       ]
     },
