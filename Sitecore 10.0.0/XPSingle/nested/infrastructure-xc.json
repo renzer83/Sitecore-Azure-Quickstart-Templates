@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "variables": {
     "webApiVersion": "2018-02-01",
-    "appServiceEnvironmentName": "testnu2009",
+    "appServiceEnvironmentName": "ase-dev-test",
     "serverFarmApiVersion": "2018-02-01",
     "dbApiVersion": "2020-02-02-preview",                    
 
