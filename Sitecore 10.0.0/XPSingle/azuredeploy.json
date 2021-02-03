@@ -201,7 +201,7 @@
     "coreSqlDatabasePassword": {
       "type": "securestring",
       "minLength": 8,
-      "defaultValue": "Anhembi123"
+      "defaultValue": "Anhembi1234"
       // "defaultValue": "[concat(toUpper(uniqueString('core', parameters('passwordSalt'))), uniqueString('core', parameters('sqlServerPassword'), parameters('passwordSalt')), toUpper(uniqueString('core', parameters('sitecoreAdminPassword'), parameters('passwordSalt'))), '4@')]"
     },
     "masterSqlDatabaseUserName": {
