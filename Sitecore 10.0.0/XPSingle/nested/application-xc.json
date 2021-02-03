@@ -428,7 +428,7 @@
           }
         }
       }
-    }
+    },
     {
       "apiVersion": "[variables('resourcesApiVersion')]",
       "name": "[concat(parameters('deploymentId'), '-application-xc-solr')]",
