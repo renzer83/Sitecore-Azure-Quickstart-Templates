@@ -20,7 +20,7 @@
 
     "refDataSqlDatabaseCollation": "Latin1_General_CS_AS",
 
-    "xcSingleHostingPlanNameTidy": "[toLower(trim(parameters('xcSingleHostingPlanName')))]",
+    "xcSingleHostingPlanNameTidy": "ne-dv-webcm-ase-01-spl-01",
 
     "xcSingleWebAppNameTidy": "[toLower(trim(parameters('xcSingleWebAppName')))]",
 

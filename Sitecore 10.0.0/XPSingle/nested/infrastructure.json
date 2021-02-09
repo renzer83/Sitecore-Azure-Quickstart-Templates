@@ -22,7 +22,7 @@
     "formsSqlDatabaseNameTidy": "[toLower(trim(parameters('formsSqlDatabaseName')))]",
     "exmMasterSqlDatabaseNameTidy": "[toLower(trim(parameters('exmMasterSqlDatabaseName')))]",
 
-    "singleHostingPlanNameTidy": "[toLower(trim(parameters('singleHostingPlanName')))]",
+    "singleHostingPlanNameTidy": "ne-dv-webcm-ase-01-spl-01",
 
     "siWebAppNameTidy": "[toLower(trim(parameters('siWebAppName')))]",
     "singleWebAppNameTidy": "[toLower(trim(parameters('singleWebAppName')))]",
