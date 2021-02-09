@@ -126,7 +126,7 @@
     "xcSingleHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "[concat(parameters('deploymentId'), '-xc-single-hp')]"
+      "defaultValue": "ne-dv-webcm-ase-01-spl-01"
     },
     "xcSingleHostingPlanSkuName": {
       "type": "string",
@@ -144,28 +144,28 @@
     }
   },
   "resources": [
-    {
-      "type": "Microsoft.Web/serverfarms",
-      "name": "[variables('xcSingleHostingPlanNameTidy')]",
-      "apiVersion": "[variables('serverFarmApiVersion')]",
-      "sku": {
-        "name": "I1",
-        "tier": "Isolated",
-        "size": "I1", 
-        "capacity": "[parameters('xcSingleHostingPlanSkuCapacity')]" 
-      },
-      "properties": {
-        "name": "[variables('xcSingleHostingPlanNameTidy')]",
-        "hostingEnvironmentProfile": {
-            "id": "[resourceId('Microsoft.Web/hostingEnvironments',variables('appServiceEnvironmentName'))]"
-      }
-      },
-      "location": "[parameters('location')]",
-      "tags": {
-        "provider": "[variables('sitecoreTags').provider]",
-        "logicalName": "[variables('sitecoreTags').xcSingle]"
-      }
-    },
+    // {
+    //   "type": "Microsoft.Web/serverfarms",
+    //   "name": "[variables('xcSingleHostingPlanNameTidy')]",
+    //   "apiVersion": "[variables('serverFarmApiVersion')]",
+    //   "sku": {
+    //     "name": "I1",
+    //     "tier": "Isolated",
+    //     "size": "I1", 
+    //     "capacity": "[parameters('xcSingleHostingPlanSkuCapacity')]" 
+    //   },
+    //   "properties": {
+    //     "name": "[variables('xcSingleHostingPlanNameTidy')]",
+    //     "hostingEnvironmentProfile": {
+    //         "id": "[resourceId('Microsoft.Web/hostingEnvironments',variables('appServiceEnvironmentName'))]"
+    //   }
+    //   },
+    //   "location": "[parameters('location')]",
+    //   "tags": {
+    //     "provider": "[variables('sitecoreTags').provider]",
+    //     "logicalName": "[variables('sitecoreTags').xcSingle]"
+    //   }
+    // },
     {
       "type": "Microsoft.Web/sites",
       "name": "[variables('xcSingleWebAppNameTidy')]",
@@ -239,237 +239,5 @@
       "location": "[parameters('location')]",
       "apiVersion": "[variables('dbApiVersion')]"
     }   
-    // {
-    //   "type": "Microsoft.Sql/servers/databases",
-    //   "name": "[concat(variables('sqlServerNameTidy'), '/', variables('refDataSqlDatabaseNameTidy'))]",
-    //   "location": "[parameters('location')]",
-    //   "apiVersion": "[variables('dbApiVersion')]",
-    //   "properties": {
-    //     "edition": "[parameters('sqlDatabaseEdition')]",
-    //     "collation": "[variables('refDataSqlDatabaseCollation')]",
-    //     "maxSizeBytes": "[parameters('sqlDatabaseMaxSize')]",
-    //     "requestedServiceObjectiveName": "[parameters('sqlBasicDatabaseServiceObjectiveLevel')]"
-    //   },
-    //   "resources": [
-    //     {
-    //       "name": "current",
-    //       "type": "transparentDataEncryption",
-    //       "dependsOn": [
-    //         "[variables('refDataSqlDatabaseNameTidy')]"
-    //       ],
-    //       "apiVersion": "2014-04-01",
-    //       "properties": {
-    //         "status": "Enabled"
-    //       }
-    //     }
-    //   ],
-    //   "tags": {
-    //     "provider": "[variables('sitecoreTags').provider]",
-    //     "logicalName": "[variables('sitecoreTags').xcRefData]"
-    //   }
-    // },
-    // {
-    //   "type": "Microsoft.Sql/servers/databases",
-    //   "name": "[concat(variables('sqlServerNameTidy'), '/', variables('reportingSqlDatabaseNameTidy'))]",
-    //   "location": "[parameters('location')]",
-    //   "apiVersion": "[variables('dbApiVersion')]",
-    //   "properties": {
-    //     "edition": "[parameters('sqlDatabaseEdition')]",
-    //     "collation": "[parameters('sqlDatabaseCollation')]",
-    //     "maxSizeBytes": "[parameters('sqlDatabaseMaxSize')]",
-    //     "requestedServiceObjectiveName": "[parameters('sqlDatabaseServiceObjectiveLevel')]"
-    //   },
-    //   "resources": [
-    //     {
-    //       "name": "current",
-    //       "type": "transparentDataEncryption",
-    //       "dependsOn": [
-    //         "[variables('reportingSqlDatabaseNameTidy')]"
-    //       ],
-    //       "apiVersion": "2014-04-01",
-    //       "properties": {
-    //         "status": "Enabled"
-    //       }
-    //     }
-    //   ],
-    //   "tags": {
-    //     "provider": "[variables('sitecoreTags').provider]",
-    //     "logicalName": "[variables('sitecoreTags').reporting]"
-    //   }
-    // },
-    // {
-    //   "type": "Microsoft.Sql/servers/databases",
-    //   "name": "[concat(variables('sqlServerNameTidy'), '/', variables('shardMapManagerSqlDatabaseNameTidy'))]",
-    //   "location": "[parameters('location')]",
-    //   "apiVersion": "[variables('dbApiVersion')]",
-    //   "properties": {
-    //     "edition": "[parameters('sqlDatabaseEdition')]",
-    //     "collation": "[parameters('sqlDatabaseCollation')]",
-    //     "maxSizeBytes": "[parameters('sqlDatabaseMaxSize')]",
-    //     "requestedServiceObjectiveName": "[parameters('sqlBasicDatabaseServiceObjectiveLevel')]"
-    //   },
-    //   "resources": [
-    //     {
-    //       "name": "current",
-    //       "type": "transparentDataEncryption",
-    //       "dependsOn": [
-    //         "[variables('shardMapManagerSqlDatabaseNameTidy')]"
-    //       ],
-    //       "apiVersion": "2014-04-01",
-    //       "properties": {
-    //         "status": "Enabled"
-    //       }
-    //     }
-    //   ],
-    //   "tags": {
-    //     "provider": "[variables('sitecoreTags').provider]",
-    //     "logicalName": "[variables('sitecoreTags').xcShardMapManager]"
-    //   }
-    // },
-    // {
-    //   "type": "Microsoft.Sql/servers/databases",
-    //   "name": "[concat(variables('sqlServerNameTidy'), '/', variables('shard0SqlDatabaseNameTidy'))]",
-    //   "location": "[parameters('location')]",
-    //   "apiVersion": "[variables('dbApiVersion')]",
-    //   "properties": {
-    //     "edition": "[parameters('sqlDatabaseEdition')]",
-    //     "collation": "[parameters('sqlDatabaseCollation')]",
-    //     "maxSizeBytes": "[parameters('sqlDatabaseMaxSize')]",
-    //     "requestedServiceObjectiveName": "[parameters('sqlBasicDatabaseServiceObjectiveLevel')]"
-    //   },
-    //   "resources": [
-    //     {
-    //       "name": "current",
-    //       "type": "transparentDataEncryption",
-    //       "dependsOn": [
-    //         "[variables('shard0SqlDatabaseNameTidy')]"
-    //       ],
-    //       "apiVersion": "2014-04-01",
-    //       "properties": {
-    //         "status": "Enabled"
-    //       }
-    //     }
-    //   ],
-    //   "tags": {
-    //     "provider": "[variables('sitecoreTags').provider]",
-    //     "logicalName": "[variables('sitecoreTags').xcShard0]"
-    //   }
-    // },
-    // {
-    //   "type": "Microsoft.Sql/servers/databases",
-    //   "name": "[concat(variables('sqlServerNameTidy'), '/', variables('shard1SqlDatabaseNameTidy'))]",
-    //   "location": "[parameters('location')]",
-    //   "apiVersion": "[variables('dbApiVersion')]",
-    //   "properties": {
-    //     "edition": "[parameters('sqlDatabaseEdition')]",
-    //     "collation": "[parameters('sqlDatabaseCollation')]",
-    //     "maxSizeBytes": "[parameters('sqlDatabaseMaxSize')]",
-    //     "requestedServiceObjectiveName": "[parameters('sqlBasicDatabaseServiceObjectiveLevel')]"
-    //   },
-    //   "resources": [
-    //     {
-    //       "name": "current",
-    //       "type": "transparentDataEncryption",
-    //       "dependsOn": [
-    //         "[variables('shard1SqlDatabaseNameTidy')]"
-    //       ],
-    //       "apiVersion": "2014-04-01",
-    //       "properties": {
-    //         "status": "Enabled"
-    //       }
-    //     }
-    //   ],
-    //   "tags": {
-    //     "provider": "[variables('sitecoreTags').provider]",
-    //     "logicalName": "[variables('sitecoreTags').xcShard1]"
-    //   }
-    // },
-    // {
-    //   "type": "Microsoft.Sql/servers/databases",
-    //   "name": "[concat(variables('sqlServerNameTidy'), '/', variables('maSqlDatabaseNameTidy'))]",
-    //   "location": "[parameters('location')]",
-    //   "apiVersion": "[variables('dbApiVersion')]",
-    //   "properties": {
-    //     "edition": "[parameters('sqlDatabaseEdition')]",
-    //     "collation": "[parameters('sqlDatabaseCollation')]",
-    //     "maxSizeBytes": "[parameters('sqlDatabaseMaxSize')]",
-    //     "requestedServiceObjectiveName": "[parameters('sqlBasicDatabaseServiceObjectiveLevel')]"
-    //   },
-    //   "resources": [
-    //     {
-    //       "name": "current",
-    //       "type": "transparentDataEncryption",
-    //       "dependsOn": [
-    //         "[variables('maSqlDatabaseNameTidy')]"
-    //       ],
-    //       "apiVersion": "2014-04-01",
-    //       "properties": {
-    //         "status": "Enabled"
-    //       }
-    //     }
-    //   ],
-    //   "tags": {
-    //     "provider": "[variables('sitecoreTags').provider]",
-    //     "logicalName": "[variables('sitecoreTags').ma]"
-    //   }
-    // },
-    // {
-    //   "type": "Microsoft.Sql/servers/databases",
-    //   "name": "[concat(variables('sqlServerNameTidy'), '/', variables('processingEngineTasksSqlDatabaseNameTidy'))]",
-    //   "location": "[parameters('location')]",
-    //   "apiVersion": "[variables('dbApiVersion')]",
-    //   "properties": {
-    //     "edition": "[parameters('sqlDatabaseEdition')]",
-    //     "collation": "[parameters('sqlDatabaseCollation')]",
-    //     "maxSizeBytes": "[parameters('sqlDatabaseMaxSize')]",
-    //     "requestedServiceObjectiveName": "[parameters('sqlBasicDatabaseServiceObjectiveLevel')]"
-    //   },
-    //   "resources": [
-    //     {
-    //       "name": "current",
-    //       "type": "transparentDataEncryption",
-    //       "dependsOn": [
-    //         "[variables('processingEngineTasksSqlDatabaseNameTidy')]"
-    //       ],
-    //       "apiVersion": "2014-04-01",
-    //       "properties": {
-    //         "status": "Enabled"
-    //       }
-    //     }
-    //   ],
-    //   "tags": {
-    //     "provider": "[variables('sitecoreTags').provider]",
-    //     "logicalName": "[variables('sitecoreTags').cortexProcessingEngineTasks]"
-    //   }
-    // },
-    // {
-    //   "type": "Microsoft.Sql/servers/databases",
-    //   "name": "[concat(variables('sqlServerNameTidy'), '/', variables('processingEngineStorageSqlDatabaseNameTidy'))]",
-    //   "location": "[parameters('location')]",
-    //   "apiVersion": "[variables('dbApiVersion')]",
-    //   "properties": {
-    //     "edition": "[parameters('sqlDatabaseEdition')]",
-    //     "collation": "[parameters('sqlDatabaseCollation')]",
-    //     "maxSizeBytes": "[parameters('sqlDatabaseMaxSize')]",
-    //     "requestedServiceObjectiveName": "[parameters('sqlBasicDatabaseServiceObjectiveLevel')]"
-    //   },
-    //   "resources": [
-    //     {
-    //       "name": "current",
-    //       "type": "transparentDataEncryption",
-    //       "dependsOn": [
-    //         "[variables('processingEngineStorageSqlDatabaseNameTidy')]"
-    //       ],
-    //       "apiVersion": "2014-04-01",
-    //       "properties": {
-    //         "status": "Enabled"
-    //       }
-    //     }
-    //   ],
-    //   "tags": {
-    //     "provider": "[variables('sitecoreTags').provider]",
-    //     "logicalName": "[variables('sitecoreTags').cortexProcessingEngineStorage]"
-    //   }
-    // }
   ]
 }

@@ -231,28 +231,28 @@
     }
   },
   "resources": [
-    {
-      "type": "Microsoft.Web/serverfarms",
-      "name": "[variables('singleHostingPlanNameTidy')]",
-      "apiVersion": "[variables('serverFarmApiVersion')]",
-      "sku": {
-        "name": "I1",
-        "tier": "Isolated",
-        "size": "I1",
-        "capacity": "[parameters('singleHostingPlanSkuCapacity')]"
-      },
-      "properties": {
-        "name": "[variables('singleHostingPlanNameTidy')]",
-        "hostingEnvironmentProfile": {
-            "id": "[resourceId('ne-dv-capro-ase-rg','Microsoft.Web/hostingEnvironments',variables('appServiceEnvironmentName'))]"
-        }
-      },
-      "location": "[parameters('location')]",
-      "tags": {
-        "provider": "[variables('sitecoreTags').provider]",
-        "logicalName": "[variables('sitecoreTags').single]"
-      }
-    },
+    // {
+    //   "type": "Microsoft.Web/serverfarms",
+    //   "name": "[variables('singleHostingPlanNameTidy')]",
+    //   "apiVersion": "[variables('serverFarmApiVersion')]",
+    //   "sku": {
+    //     "name": "I1",
+    //     "tier": "Isolated",
+    //     "size": "I1",
+    //     "capacity": "[parameters('singleHostingPlanSkuCapacity')]"
+    //   },
+    //   "properties": {
+    //     "name": "[variables('singleHostingPlanNameTidy')]",
+    //     "hostingEnvironmentProfile": {
+    //         "id": "[resourceId('ne-dv-capro-ase-rg','Microsoft.Web/hostingEnvironments',variables('appServiceEnvironmentName'))]"
+    //     }
+    //   },
+    //   "location": "[parameters('location')]",
+    //   "tags": {
+    //     "provider": "[variables('sitecoreTags').provider]",
+    //     "logicalName": "[variables('sitecoreTags').single]"
+    //   }
+    // },
     {
       "type": "Microsoft.Web/sites",
       "name": "[variables('siWebAppNameTidy')]",
