@@ -22,7 +22,7 @@
     "formsSqlDatabaseNameTidy": "[toLower(trim(parameters('formsSqlDatabaseName')))]",
     "exmMasterSqlDatabaseNameTidy": "[toLower(trim(parameters('exmMasterSqlDatabaseName')))]",
 
-    "singleHostingPlanNameTidy": "ne-dv-webcm-ase-01-spl-01",
+    "singleHostingPlanNameTidy": "[toLower(trim(parameters('singleHostingPlanName')))]",
 
     "siWebAppNameTidy": "[toLower(trim(parameters('siWebAppName')))]",
     "singleWebAppNameTidy": "[toLower(trim(parameters('singleWebAppName')))]",
@@ -195,7 +195,7 @@
     "singleHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "ne-dv-webcm-ase-01-spl-01"
+      "defaultValue": "[concat(parameters('deploymentId'), '-single-hp')]"
     },
     "singleHostingPlanSkuName": {
       "type": "string",
@@ -231,28 +231,28 @@
     }
   },
   "resources": [
-    // {
-    //   "type": "Microsoft.Web/serverfarms",
-    //   "name": "[variables('singleHostingPlanNameTidy')]",
-    //   "apiVersion": "[variables('serverFarmApiVersion')]",
-    //   "sku": {
-    //     "name": "I1",
-    //     "tier": "Isolated",
-    //     "size": "I1",
-    //     "capacity": "[parameters('singleHostingPlanSkuCapacity')]"
-    //   },
-    //   "properties": {
-    //     "name": "[variables('singleHostingPlanNameTidy')]",
-    //     "hostingEnvironmentProfile": {
-    //         "id": "[resourceId('ne-dv-capro-ase-rg','Microsoft.Web/hostingEnvironments',variables('appServiceEnvironmentName'))]"
-    //     }
-    //   },
-    //   "location": "[parameters('location')]",
-    //   "tags": {
-    //     "provider": "[variables('sitecoreTags').provider]",
-    //     "logicalName": "[variables('sitecoreTags').single]"
-    //   }
-    // },
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "name": "[variables('singleHostingPlanNameTidy')]",
+      "apiVersion": "[variables('serverFarmApiVersion')]",
+      "sku": {
+        "name": "I1",
+        "tier": "Isolated",
+        "size": "I1",
+        "capacity": "[parameters('singleHostingPlanSkuCapacity')]"
+      },
+      "properties": {
+        "name": "[variables('singleHostingPlanNameTidy')]",
+        "hostingEnvironmentProfile": {
+            "id": "[resourceId('ne-dv-capro-ase-rg','Microsoft.Web/hostingEnvironments',variables('appServiceEnvironmentName'))]"
+        }
+      },
+      "location": "[parameters('location')]",
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]",
+        "logicalName": "[variables('sitecoreTags').single]"
+      }
+    },
     {
       "type": "Microsoft.Web/sites",
       "name": "[variables('siWebAppNameTidy')]",

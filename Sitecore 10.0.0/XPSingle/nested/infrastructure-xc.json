@@ -20,7 +20,7 @@
 
     "refDataSqlDatabaseCollation": "Latin1_General_CS_AS",
 
-    "xcSingleHostingPlanNameTidy": "ne-dv-webcm-ase-01-spl-01",
+    "xcSingleHostingPlanNameTidy": "[toLower(trim(parameters('xcSingleHostingPlanName')))]",
 
     "xcSingleWebAppNameTidy": "[toLower(trim(parameters('xcSingleWebAppName')))]",
 
@@ -126,7 +126,7 @@
     "xcSingleHostingPlanName": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "ne-dv-webcm-ase-01-spl-01"
+      "defaultValue": "[concat(parameters('deploymentId'), '-xc-single-hp')]"
     },
     "xcSingleHostingPlanSkuName": {
       "type": "string",
@@ -144,28 +144,28 @@
     }
   },
   "resources": [
-    // {
-    //   "type": "Microsoft.Web/serverfarms",
-    //   "name": "[variables('xcSingleHostingPlanNameTidy')]",
-    //   "apiVersion": "[variables('serverFarmApiVersion')]",
-    //   "sku": {
-    //     "name": "I1",
-    //     "tier": "Isolated",
-    //     "size": "I1", 
-    //     "capacity": "[parameters('xcSingleHostingPlanSkuCapacity')]" 
-    //   },
-    //   "properties": {
-    //     "name": "[variables('xcSingleHostingPlanNameTidy')]",
-    //     "hostingEnvironmentProfile": {
-    //         "id": "[resourceId('Microsoft.Web/hostingEnvironments',variables('appServiceEnvironmentName'))]"
-    //   }
-    //   },
-    //   "location": "[parameters('location')]",
-    //   "tags": {
-    //     "provider": "[variables('sitecoreTags').provider]",
-    //     "logicalName": "[variables('sitecoreTags').xcSingle]"
-    //   }
-    // },
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "name": "[variables('xcSingleHostingPlanNameTidy')]",
+      "apiVersion": "[variables('serverFarmApiVersion')]",
+      "sku": {
+        "name": "I1",
+        "tier": "Isolated",
+        "size": "I1", 
+        "capacity": "[parameters('xcSingleHostingPlanSkuCapacity')]" 
+      },
+      "properties": {
+        "name": "[variables('xcSingleHostingPlanNameTidy')]",
+        "hostingEnvironmentProfile": {
+            "id": "[resourceId('ne-dv-capro-ase-rg','Microsoft.Web/hostingEnvironments',variables('appServiceEnvironmentName'))]"
+      }
+      },
+      "location": "[parameters('location')]",
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]",
+        "logicalName": "[variables('sitecoreTags').xcSingle]"
+      }
+    },
     {
       "type": "Microsoft.Web/sites",
       "name": "[variables('xcSingleWebAppNameTidy')]",
