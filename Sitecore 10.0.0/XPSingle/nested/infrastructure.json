@@ -7,6 +7,7 @@
     "serverFarmApiVersion": "2018-02-01",
     "dbApiVersion": "2020-02-02-preview",                    
     "vnetResourceName": "dv-capro-vnet-02",
+    "ResourcegroupNamevnet": "ne-dv-capro-net-rg",
     "managedInstanceSubnetName": "dv-sqlmi-dat-snet-02",
     "searchApiVersion": "2015-08-19",
     "applicationInsightsApiVersion": "2015-05-01",
@@ -329,7 +330,7 @@
           "licenseType": "BasePrice",
           "collation": "SQL_Latin1_General_CP1_CI_AS",
           "publicDataEndpointEnabled": true,
-          "subnetId": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks/subnets',variables('vnetResourceName'),variables('managedInstanceSubnetName'))]"
+          "subnetId": "[resourceId(variables('ResourcegroupNamevnet'),'Microsoft.Network/virtualNetworks/subnets',variables('vnetResourceName'),variables('managedInstanceSubnetName'))]"
       }  
     },
     {
