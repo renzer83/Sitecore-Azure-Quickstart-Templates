@@ -244,7 +244,7 @@
       "properties": {
         "name": "[variables('singleHostingPlanNameTidy')]",
         "hostingEnvironmentProfile": {
-            "id": "[resourceId('resourceGroups/ne-dv-capro-ase-rg/providers','Microsoft.Web/hostingEnvironments',variables('appServiceEnvironmentName'))]"
+            "id": "[resourceId('resourceGroups/ne-dv-capro-ase-rg','Microsoft.Web/hostingEnvironments',variables('appServiceEnvironmentName'))]"
         }
       },
       "location": "[parameters('location')]",
