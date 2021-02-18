@@ -231,82 +231,82 @@
     }
   },
   "resources": [
-    {
-      "type": "Microsoft.Web/serverfarms",
-      "name": "[variables('singleHostingPlanNameTidy')]",
-      "apiVersion": "[variables('serverFarmApiVersion')]",
-      "sku": {
-        "name": "I1",
-        "tier": "Isolated",
-        "size": "I1",
-        "capacity": "[parameters('singleHostingPlanSkuCapacity')]"
-      },
-      "properties": {
-        "name": "[variables('singleHostingPlanNameTidy')]",
-        "hostingEnvironmentProfile": {
-            "id": "[resourceId('ne-dv-capro-ase-rg','Microsoft.Web/hostingEnvironments',variables('appServiceEnvironmentName'))]"
-        }
-      },
-      "location": "[parameters('location')]",
-      "tags": {
-        "provider": "[variables('sitecoreTags').provider]",
-        "logicalName": "[variables('sitecoreTags').single]"
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites",
-      "name": "[variables('siWebAppNameTidy')]",
-      "location": "[parameters('location')]",
-      "apiVersion": "[variables('webApiVersion')]",
-      "properties": {
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]",
-        "siteConfig": {
-          "use32BitWorkerProcess": false,
-          "alwaysOn": true,
-          "phpVersion": "",
-          "defaultDocuments": [
-            "index.html"
-          ],
-          "metadata": [
-            {
-              "name": "CURRENT_STACK",
-              "value": "dotnetcore"
-            }
-          ]
-        }
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
-      ],
-      "tags": {
-        "provider": "[variables('sitecoreTags').provider]",
-        "logicalName": "[variables('sitecoreTags').si]"
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites",
-      "name": "[variables('singleWebAppNameTidy')]",
-      "apiVersion": "[variables('webApiVersion')]",
-      "properties": {
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]",
-        "siteConfig": {
-          "use32BitWorkerProcess": false,
-          "alwaysOn": true,
-          "phpVersion": "",
-          "defaultDocuments": [
-            "index.html"
-          ]
-        }
-      },
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
-      ],
-      "tags": {
-        "provider": "[variables('sitecoreTags').provider]",
-        "logicalName": "[variables('sitecoreTags').single]"
-      }
-    },
+    // {
+    //   "type": "Microsoft.Web/serverfarms",
+    //   "name": "[variables('singleHostingPlanNameTidy')]",
+    //   "apiVersion": "[variables('serverFarmApiVersion')]",
+    //   "sku": {
+    //     "name": "I1",
+    //     "tier": "Isolated",
+    //     "size": "I1",
+    //     "capacity": "[parameters('singleHostingPlanSkuCapacity')]"
+    //   },
+    //   "properties": {
+    //     "name": "[variables('singleHostingPlanNameTidy')]",
+    //     "hostingEnvironmentProfile": {
+    //         "id": "[resourceId('ne-dv-capro-ase-rg','Microsoft.Web/hostingEnvironments',variables('appServiceEnvironmentName'))]"
+    //     }
+    //   },
+    //   "location": "[parameters('location')]",
+    //   "tags": {
+    //     "provider": "[variables('sitecoreTags').provider]",
+    //     "logicalName": "[variables('sitecoreTags').single]"
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Web/sites",
+    //   "name": "[variables('siWebAppNameTidy')]",
+    //   "location": "[parameters('location')]",
+    //   "apiVersion": "[variables('webApiVersion')]",
+    //   "properties": {
+    //     "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]",
+    //     "siteConfig": {
+    //       "use32BitWorkerProcess": false,
+    //       "alwaysOn": true,
+    //       "phpVersion": "",
+    //       "defaultDocuments": [
+    //         "index.html"
+    //       ],
+    //       "metadata": [
+    //         {
+    //           "name": "CURRENT_STACK",
+    //           "value": "dotnetcore"
+    //         }
+    //       ]
+    //     }
+    //   },
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
+    //   ],
+    //   "tags": {
+    //     "provider": "[variables('sitecoreTags').provider]",
+    //     "logicalName": "[variables('sitecoreTags').si]"
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Web/sites",
+    //   "name": "[variables('singleWebAppNameTidy')]",
+    //   "apiVersion": "[variables('webApiVersion')]",
+    //   "properties": {
+    //     "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]",
+    //     "siteConfig": {
+    //       "use32BitWorkerProcess": false,
+    //       "alwaysOn": true,
+    //       "phpVersion": "",
+    //       "defaultDocuments": [
+    //         "index.html"
+    //       ]
+    //     }
+    //   },
+    //   "location": "[parameters('location')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
+    //   ],
+    //   "tags": {
+    //     "provider": "[variables('sitecoreTags').provider]",
+    //     "logicalName": "[variables('sitecoreTags').single]"
+    //   }
+    // },
     {
       "type": "Microsoft.Sql/managedInstances",
       "apiVersion": "[variables('dbApiVersion')]",
@@ -398,56 +398,56 @@
       "tags": {
         "provider": "[variables('sitecoreTags').provider]"
       }
-    },
-    {
-      "type": "Microsoft.Insights/Components",
-      "condition": "[parameters('useApplicationInsights')]",
-      "name": "[variables('applicationInsightsNameTidy')]",
-      "apiVersion": "[variables('applicationInsightsApiVersion')]",
-      "location": "[parameters('applicationInsightsLocation')]",
-      "properties": {
-        "ApplicationId": "[variables('applicationInsightsNameTidy')]",
-        "Application_Type": "web"
-      },
-      "tags": {
-        "provider": "[variables('sitecoreTags').provider]"
-      }
-    },
-    {
-      "type": "Microsoft.Insights/Components/CurrentBillingFeatures",
-      "condition": "[parameters('useApplicationInsights')]",
-      "name": "[concat(variables('applicationInsightsNameTidy'), '/', variables('applicationInsightsPricePlanTidy'))]",
-      "location": "[parameters('applicationInsightsLocation')]",
-      "apiVersion": "[variables('applicationInsightsApiVersion')]",
-      "properties": {
-        "CurrentBillingFeatures": "[parameters('applicationInsightsCurrentBillingFeatures')]",
-        "DataVolumeCap": {
-          "Cap": "[float(parameters('applicationInsightsDataVolumeCap'))]"
-        }
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Insights/Components', variables('applicationInsightsNameTidy'))]"
-      ],
-      "tags": {
-        "provider": "[variables('sitecoreTags').provider]"
-      }
-    },
-    {
-      "type": "Microsoft.Web/certificates",
-      "name": "[variables('authCertificateNameTidy')]",
-      "apiVersion": "[variables('certificateApiVersion')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
-      ],
-      "properties": {
-        "password": "[parameters('authCertificatePassword')]",
-        "pfxBlob": "[parameters('authCertificateBlob')]"
-      },
-      "tags": {
-        "provider": "[variables('sitecoreTags').provider]"
-      }
     }
+    // {
+    //   "type": "Microsoft.Insights/Components",
+    //   "condition": "[parameters('useApplicationInsights')]",
+    //   "name": "[variables('applicationInsightsNameTidy')]",
+    //   "apiVersion": "[variables('applicationInsightsApiVersion')]",
+    //   "location": "[parameters('applicationInsightsLocation')]",
+    //   "properties": {
+    //     "ApplicationId": "[variables('applicationInsightsNameTidy')]",
+    //     "Application_Type": "web"
+    //   },
+    //   "tags": {
+    //     "provider": "[variables('sitecoreTags').provider]"
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Insights/Components/CurrentBillingFeatures",
+    //   "condition": "[parameters('useApplicationInsights')]",
+    //   "name": "[concat(variables('applicationInsightsNameTidy'), '/', variables('applicationInsightsPricePlanTidy'))]",
+    //   "location": "[parameters('applicationInsightsLocation')]",
+    //   "apiVersion": "[variables('applicationInsightsApiVersion')]",
+    //   "properties": {
+    //     "CurrentBillingFeatures": "[parameters('applicationInsightsCurrentBillingFeatures')]",
+    //     "DataVolumeCap": {
+    //       "Cap": "[float(parameters('applicationInsightsDataVolumeCap'))]"
+    //     }
+    //   },
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Insights/Components', variables('applicationInsightsNameTidy'))]"
+    //   ],
+    //   "tags": {
+    //     "provider": "[variables('sitecoreTags').provider]"
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Web/certificates",
+    //   "name": "[variables('authCertificateNameTidy')]",
+    //   "apiVersion": "[variables('certificateApiVersion')]",
+    //   "location": "[parameters('location')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
+    //   ],
+    //   "properties": {
+    //     "password": "[parameters('authCertificatePassword')]",
+    //     "pfxBlob": "[parameters('authCertificateBlob')]"
+    //   },
+    //   "tags": {
+    //     "provider": "[variables('sitecoreTags').provider]"
+    //   }
+    // }
   ],
   "outputs": {
     "infrastructure": {
