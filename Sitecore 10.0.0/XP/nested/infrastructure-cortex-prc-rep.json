@@ -11,8 +11,8 @@
     "processingEngineStorageSqlDatabaseNameTidy": "[toLower(trim(parameters('processingEngineStorageSqlDatabaseName')))]",
     "reportingSqlDatabaseNameTidy": "[toLower(trim(parameters('reportingSqlDatabaseName')))]",
 
-    "xcBasicHostingPlanNameTidy": "[toLower(trim(parameters('xcBasicHostingPlanName')))]",
-    "xcResourceIntensiveHostingPlanNameTidy": "[toLower(trim(parameters('xcResourceIntensiveHostingPlanName')))]",
+    "xcBasicHostingPlanNameTidy": "ne-ql-webcm-ase-01-spl-01",
+    "xcResourceIntensiveHostingPlanNameTidy": "ne-ql-webcm-ase-01-spl-01",
 
     "cortexProcessingWebAppNameTidy": "[toLower(trim(parameters('cortexProcessingWebAppName')))]",
     "cortexReportingWebAppNameTidy": "[toLower(trim(parameters('cortexReportingWebAppName')))]",

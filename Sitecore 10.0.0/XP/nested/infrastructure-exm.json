@@ -5,7 +5,7 @@
     "webApiVersion": "2018-02-01",
     "serverFarmApiVersion": "2018-02-01",
 
-    "exmDdsHostingPlanNameTidy": "[toLower(trim(parameters('exmDdsHostingPlanName')))]",
+    "exmDdsHostingPlanNameTidy": "ne-ql-webcm-ase-01-spl-01",
     "exmDdsWebAppNameTidy": "[toLower(trim(parameters('exmDdsWebAppName')))]",
     "useAse": "[not(empty(parameters('aseName')))]",
     "aseResourceId": "[resourceId(parameters('aseResourceGroupName'), 'Microsoft.Web/hostingEnvironments', parameters('aseName'))]",
@@ -140,21 +140,6 @@
   },
   "resources": [
     {
-      "type": "Microsoft.Web/serverfarms",
-      "name": "[variables('exmDdsHostingPlanNameTidy')]",
-      "apiVersion": "[variables('serverFarmApiVersion')]",
-      "sku": {
-        "name": "[if(not(variables('useAse')), parameters('resourceSizes').exmDdsHostingPlan.SkuName, parameters('resourceSizes').exmDdsHostingPlanIsolated.SkuName)]",
-        "capacity": "[if(not(variables('useAse')), parameters('resourceSizes').exmDdsHostingPlan.SkuCapacity, parameters('resourceSizes').exmDdsHostingPlanIsolated.SkuCapacity)]"
-      },
-      "properties": "[if(not(variables('useAse')), variables('hostingPlanProperties').exmDdsProperties, variables('hostingPlanProperties').exmDdsPropertiesWithASE)]",
-      "location": "[parameters('location')]",
-      "tags": {
-        "provider": "[variables('sitecoreTags').provider]",
-        "logicalName": "[variables('sitecoreTags').dds]"
-      }
-    },
-    {
       "type": "Microsoft.Web/sites",
       "name": "[variables('exmDdsWebAppNameTidy')]",
       "apiVersion": "[variables('webApiVersion')]",
@@ -170,9 +155,6 @@
         }
       },
       "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('exmDdsHostingPlanNameTidy'))]"
-      ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
         "logicalName": "[variables('sitecoreTags').dds]"

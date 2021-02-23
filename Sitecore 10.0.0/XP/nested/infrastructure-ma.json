@@ -9,7 +9,7 @@
 
     "maSqlDatabaseNameTidy": "[toLower(trim(parameters('maSqlDatabaseName')))]",
 
-    "xcBasicHostingPlanNameTidy": "[toLower(trim(parameters('xcBasicHostingPlanName')))]",
+    "xcBasicHostingPlanNameTidy": "ne-ql-webcm-ase-01-spl-01",
 
     "maOpsWebAppNameTidy": "[toLower(trim(parameters('maOpsWebAppName')))]",
     "maRepWebAppNameTidy": "[toLower(trim(parameters('maRepWebAppName')))]",
