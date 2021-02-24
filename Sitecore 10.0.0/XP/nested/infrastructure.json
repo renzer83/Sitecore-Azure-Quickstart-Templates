@@ -990,9 +990,6 @@
           ]
         }
       },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('siHostingPlanNameTidy'))]"
-      ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
         "logicalName": "[variables('sitecoreTags').si]"
@@ -1014,9 +1011,6 @@
         }
       },
       "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('cmHostingPlanNameTidy'))]"
-      ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
         "logicalName": "[variables('sitecoreTags').cm]"
@@ -1038,9 +1032,6 @@
         }
       },
       "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('cdHostingPlanNameTidy'))]"
-      ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
         "logicalName": "[variables('sitecoreTags').cd]"
@@ -1062,9 +1053,6 @@
         }
       },
       "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('prcHostingPlanNameTidy'))]"
-      ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
         "logicalName": "[variables('sitecoreTags').prc]"
@@ -1086,9 +1074,6 @@
         }
       },
       "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('repHostingPlanNameTidy'))]"
-      ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
         "logicalName": "[variables('sitecoreTags').rep]"
@@ -1402,13 +1387,6 @@
       "name": "[variables('authCertificateNameTidy')]",
       "apiVersion": "[variables('certificateApiVersion')]",
       "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('siHostingPlanNameTidy'))]",
-        "[resourceId('Microsoft.Web/serverfarms', variables('cmHostingPlanNameTidy'))]",
-        "[resourceId('Microsoft.Web/serverfarms', variables('cdHostingPlanNameTidy'))]",
-        "[resourceId('Microsoft.Web/serverfarms', variables('prcHostingPlanNameTidy'))]",
-        "[resourceId('Microsoft.Web/serverfarms', variables('repHostingPlanNameTidy'))]"
-      ],
       "properties": {
         "password": "[parameters('authCertificatePassword')]",
         "pfxBlob": "[parameters('authCertificateBlob')]",
