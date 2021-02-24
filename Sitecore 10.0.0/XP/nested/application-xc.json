@@ -159,7 +159,7 @@
 
     "xcSolrConnectionString": {
       "type": "securestring",
-      "defaultValue": ""
+      "defaultValue": "https://ql-webcm-aps-slr-01.ase-ql.creditoagricola.pt/solr"
     },
 
     "useApplicationInsights": {
