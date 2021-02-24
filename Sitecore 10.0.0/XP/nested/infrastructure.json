@@ -1381,7 +1381,7 @@
       "tags": {
         "provider": "[variables('sitecoreTags').provider]"
       }
-    }
+    },
     {
       "type": "Microsoft.Web/certificates",
       "name": "[variables('authCertificateNameTidy')]",
