@@ -18,8 +18,8 @@
     "tasksSqlDatabaseNameTidy": "[toLower(trim(parameters('tasksSqlDatabaseName')))]",
     "formsSqlDatabaseNameTidy": "[toLower(trim(parameters('formsSqlDatabaseName')))]",
     "exmMasterSqlDatabaseNameTidy": "[toLower(trim(parameters('exmMasterSqlDatabaseName')))]",
-
-    "singleHostingPlanNameTidy": "ne-dv-webcm-ase-01-spl-01",
+    "appServiceEnvironmentName": "dv-capro-ase-01",
+    "singleHostingPlanNameTidy": "[toLower(trim(parameters('singleHostingPlanName')))]",
 
     "siWebAppNameTidy": "[toLower(trim(parameters('siWebAppName')))]",
     "singleWebAppNameTidy": "[toLower(trim(parameters('singleWebAppName')))]",
@@ -229,6 +229,28 @@
   },
   "resources": [
     {
+      "type": "Microsoft.Web/serverfarms",
+      "name": "[variables('singleHostingPlanNameTidy')]",
+      "apiVersion": "[variables('serverFarmApiVersion')]",
+      "sku": {
+        "name": "I1",
+        "tier": "Isolated",
+        "size": "I1",
+        "capacity": "2"
+      },
+      "properties": {
+        "name": "[variables('singleHostingPlanNameTidy')]",
+        "hostingEnvironmentProfile": {
+            "id": "[resourceId('ne-dv-capro-ase-rg','Microsoft.Web/hostingEnvironments',variables('appServiceEnvironmentName'))]"
+        }
+      },
+      "location": "[parameters('location')]",
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]",
+        "logicalName": "[variables('sitecoreTags').single]"
+      }
+    },
+    {
       "type": "Microsoft.Web/sites",
       "name": "[variables('siWebAppNameTidy')]",
       "location": "[parameters('location')]",
@@ -250,6 +272,9 @@
           ]
         }
       },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
+      ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
         "logicalName": "[variables('sitecoreTags').si]"
@@ -272,7 +297,7 @@
       },
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', variables('siWebAppNameTidy'))]"
+        "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
       ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
@@ -570,6 +595,9 @@
       "name": "[variables('authCertificateNameTidy')]",
       "apiVersion": "[variables('certificateApiVersion')]",
       "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('singleHostingPlanNameTidy'))]"
+      ],
       "properties": {
         "password": "[parameters('authCertificatePassword')]",
         "pfxBlob": "[parameters('authCertificateBlob')]"

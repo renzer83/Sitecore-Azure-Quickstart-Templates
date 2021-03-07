@@ -5,7 +5,7 @@
     "webApiVersion": "2018-02-01",
     "serverFarmApiVersion": "2018-02-01",
     "dbApiVersion": "2014-04-01-preview",
-
+    "appServiceEnvironmentName": "dv-capro-ase-01",
     "sqlServerNameTidy": "[toLower(trim(parameters('sqlServerName')))]",
 
     "shardMapManagerSqlDatabaseNameTidy": "[toLower(trim(parameters('shardMapManagerSqlDatabaseName')))]",
@@ -19,7 +19,7 @@
 
     "refDataSqlDatabaseCollation": "Latin1_General_CS_AS",
 
-    "xcSingleHostingPlanNameTidy": "ne-dv-webcm-ase-01-spl-01",
+    "xcSingleHostingPlanNameTidy": "[toLower(trim(parameters('xcSingleHostingPlanName')))]",
 
     "xcSingleWebAppNameTidy": "[toLower(trim(parameters('xcSingleWebAppName')))]",
 
@@ -144,6 +144,45 @@
   },
   "resources": [
     {
+      "type": "Microsoft.Web/serverfarms",
+      "name": "[variables('xcSingleHostingPlanNameTidy')]",
+      "apiVersion": "[variables('serverFarmApiVersion')]",
+      "sku": {
+        "name": "I1",
+        "tier": "Isolated",
+        "size": "I1",
+        "capacity": "2"
+      },
+      "properties": {
+        "name": "[variables('xcSingleHostingPlanNameTidy')]",
+        "hostingEnvironmentProfile": {
+            "id": "[resourceId('ne-dv-capro-ase-rg','Microsoft.Web/hostingEnvironments',variables('appServiceEnvironmentName'))]"
+        }
+      },
+      "location": "[parameters('location')]",
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]",
+        "logicalName": "[variables('sitecoreTags').xcSingle]"
+      }
+    },
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "name": "[variables('xcSingleHostingPlanNameTidy')]",
+      "apiVersion": "[variables('serverFarmApiVersion')]",
+      "sku": {
+        "name": "[parameters('xcSingleHostingPlanSkuName')]",
+        "capacity": "[parameters('xcSingleHostingPlanSkuCapacity')]"
+      },
+      "properties": {
+        "name": "[variables('xcSingleHostingPlanNameTidy')]"
+      },
+      "location": "[parameters('location')]",
+      "tags": {
+        "provider": "[variables('sitecoreTags').provider]",
+        "logicalName": "[variables('sitecoreTags').xcSingle]"
+      }
+    },
+    {
       "type": "Microsoft.Web/sites",
       "name": "[variables('xcSingleWebAppNameTidy')]",
       "apiVersion": "[variables('webApiVersion')]",
@@ -160,6 +199,9 @@
         }
       },
       "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('xcSingleHostingPlanNameTidy'))]"
+      ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
         "logicalName": "[variables('sitecoreTags').xcSingle]"
