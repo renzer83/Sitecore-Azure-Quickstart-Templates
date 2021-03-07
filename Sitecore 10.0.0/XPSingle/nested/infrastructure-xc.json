@@ -166,23 +166,6 @@
       }
     },
     {
-      "type": "Microsoft.Web/serverfarms",
-      "name": "[variables('xcSingleHostingPlanNameTidy')]",
-      "apiVersion": "[variables('serverFarmApiVersion')]",
-      "sku": {
-        "name": "[parameters('xcSingleHostingPlanSkuName')]",
-        "capacity": "[parameters('xcSingleHostingPlanSkuCapacity')]"
-      },
-      "properties": {
-        "name": "[variables('xcSingleHostingPlanNameTidy')]"
-      },
-      "location": "[parameters('location')]",
-      "tags": {
-        "provider": "[variables('sitecoreTags').provider]",
-        "logicalName": "[variables('sitecoreTags').xcSingle]"
-      }
-    },
-    {
       "type": "Microsoft.Web/sites",
       "name": "[variables('xcSingleWebAppNameTidy')]",
       "apiVersion": "[variables('webApiVersion')]",
