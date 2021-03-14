@@ -236,7 +236,7 @@
         "name": "I1",
         "tier": "Isolated",
         "size": "I1",
-        "capacity": "2"
+        "capacity": "1"
       },
       "properties": {
         "name": "[variables('singleHostingPlanNameTidy')]",
