@@ -182,9 +182,6 @@
         }
       },
       "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('xcSingleHostingPlanNameTidy'))]"
-      ],
       "tags": {
         "provider": "[variables('sitecoreTags').provider]",
         "logicalName": "[variables('sitecoreTags').xcSingle]"
