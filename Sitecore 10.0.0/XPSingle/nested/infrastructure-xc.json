@@ -19,7 +19,7 @@
 
     "refDataSqlDatabaseCollation": "Latin1_General_CS_AS",
 
-    "xcSingleHostingPlanNameTidy": "[toLower(trim(parameters('xcSingleHostingPlanName')))]",
+    "xcSingleHostingPlanNameTidy": "ne-dv-webcm-spl-rg-single-hp",
 
     "xcSingleWebAppNameTidy": "[toLower(trim(parameters('xcSingleWebAppName')))]",
 
@@ -143,28 +143,28 @@
     }
   },
   "resources": [
-    {
-      "type": "Microsoft.Web/serverfarms",
-      "name": "[variables('xcSingleHostingPlanNameTidy')]",
-      "apiVersion": "[variables('serverFarmApiVersion')]",
-      "sku": {
-        "name": "I1",
-        "tier": "Isolated",
-        "size": "I1",
-        "capacity": "1"
-      },
-      "properties": {
-        "name": "[variables('xcSingleHostingPlanNameTidy')]",
-        "hostingEnvironmentProfile": {
-            "id": "[resourceId('ne-dv-capro-ase-rg','Microsoft.Web/hostingEnvironments',variables('appServiceEnvironmentName'))]"
-        }
-      },
-      "location": "[parameters('location')]",
-      "tags": {
-        "provider": "[variables('sitecoreTags').provider]",
-        "logicalName": "[variables('sitecoreTags').xcSingle]"
-      }
-    },
+    // {
+    //   "type": "Microsoft.Web/serverfarms",
+    //   "name": "[variables('xcSingleHostingPlanNameTidy')]",
+    //   "apiVersion": "[variables('serverFarmApiVersion')]",
+    //   "sku": {
+    //     "name": "I1",
+    //     "tier": "Isolated",
+    //     "size": "I1",
+    //     "capacity": "1"
+    //   },
+    //   "properties": {
+    //     "name": "[variables('xcSingleHostingPlanNameTidy')]",
+    //     "hostingEnvironmentProfile": {
+    //         "id": "[resourceId('ne-dv-capro-ase-rg','Microsoft.Web/hostingEnvironments',variables('appServiceEnvironmentName'))]"
+    //     }
+    //   },
+    //   "location": "[parameters('location')]",
+    //   "tags": {
+    //     "provider": "[variables('sitecoreTags').provider]",
+    //     "logicalName": "[variables('sitecoreTags').xcSingle]"
+    //   }
+    // },
     {
       "type": "Microsoft.Web/sites",
       "name": "[variables('xcSingleWebAppNameTidy')]",
